@@ -1,29 +1,13 @@
-// .grid {
-//   width: calc(100% + 30px); /* Expand the container width to account for the right margin on the last item */
-//   margin: 0 auto;
-//   margin-right: -30px; /* Offset the right margin added by the grid items */
-// }
-
-// .grid-item {
-//   width: 277px; /* This matches columnWidth */
-//   margin-bottom: 30px; /* Adds vertical space between items */
-//   // margin-right: 30px; /* Adds horizontal space between items */
-//   background-color: white;
-//   border-radius: 10px;
-//   overflow: hidden;
-//   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-// }
-
-// .grid-item img {
-//   width: 100%;
-//   height: auto;
-//   object-fit: cover;
-// }
+.scrollable-container {
+  overflow-x: auto;
+  white-space: nowrap; /* Ensures items are not wrapped */
+  width: 100%;
+}
 
 .grid {
-  width: calc(100% + 30px); /* Expand the container width to account for the right margin on the last item */
-  margin: 0 auto;
-  margin-right: -30px; /* Offset the right margin added by the grid items */
+  display: inline-block; /* Ensures the grid stays on one line */
+  /* Adjust the grid width to fit the number of columns */
+  width: calc(277px * 6 + 30px * 5); /* (Number of columns * column width) + (Number of gaps) */
 }
 
 .grid-item {
@@ -41,3 +25,33 @@
   height: auto;
   object-fit: cover;
 }
+
+// .scrollable-container {
+//   overflow-x: auto;
+//   white-space: nowrap; /* Ensures items are not wrapped */
+//   width: 100%;
+//   position: relative; /* Necessary for the absolute positioning of items */
+// }
+
+// .grid {
+//   display: flex; /* Change from inline-block to flex */
+//   width: calc(277px * 6 + 30px * 5); /* Initial width to fit 6 columns */
+//   transition: transform 0.3s ease; /* Smooth transition for scroll */
+// }
+
+// .grid-item {
+//   width: 277px; /* Matches columnWidth */
+//   margin-bottom: 30px; /* Adds vertical space between items */
+//   margin-right: 30px; /* Adds horizontal space between items */
+//   background-color: white;
+//   border-radius: 10px;
+//   overflow: hidden;
+//   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+//   display: inline-block; /* Ensures items stay in a row */
+// }
+
+// .grid-item img {
+//   width: 100%;
+//   height: auto;
+//   object-fit: cover;
+// }
