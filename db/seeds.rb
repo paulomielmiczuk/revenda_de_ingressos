@@ -1,10 +1,16 @@
 require "open-uri"
 
+puts 'Creating users...'
+
 user1 = User.create!(name: "Eventim", email: "eventim@gmail.com", password: "123456")
 user2 = User.create!(name: "Ticket Master", email: "ticketmaster@gmail.com", password: "123456")
 user3 = User.create!(name: "T4F", email: "t4f@gmail.com", password: "123456")
 user4 = User.create!(name: "Ingresse", email: "ingresse@gmail.com", password: "123456")
 user5 = User.create!(name: "Sympla", email: "sympla@gmail.com", password: "123456")
+
+puts 'Users created!'
+
+puts 'Creating events...'
 
 event1 = Event.create!(title: "Paul McCartney Got Back", date: "2024-10-15", location: "Rua Palestra Itália, 200 - Água Branca, São Paulo, São Paulo, Brasil", description: "Paul McCartney lançou sua turnê Got Back em 2022, completando 16 apresentações nos Estados Unidos. Em junho deste mesmo ano, fez uma apresentação histórica em Glastonbury, que foi definida pelo jornal British Times como o “melhor show de todos os tempos”. Em 2023, Paul levou a turnê para Austrália e México, fechando o ano com oito shows Brasil – Brasília, Belo Horizonte, São Paulo, Curitiba e Rio de Janeiro. Paul McCartney vem ao Brasil com a banda que o acompanha há vários anos - Paul 'Wix' Wickens (teclados), Brian Ray (baixo/guitarra), Rusty Anderson (guitarra) e Abe Laboriel Jr (bateria). A utilização de tecnologia de áudio e vídeo de última geração garante uma experiência inesquecível em todos os setores das venues selecionadas para as apresentações. Com grandes sucessos como 'Hey Jude', 'Live and Let Die', 'Band on the Run', 'Let It Be' e muitas outras, a experiência de um show ao vivo de Paul McCartney é muito mais do que qualquer amante da música poderia querer de um show de rock: horas dos melhores momentos dos últimos 60 anos de música, dezenas de canções da carreira solo de Paul, do período dos Wings e, claro, catálogos dos Beatles que formaram as trilhas sonoras de nossas vidas. paulmccartneygotback.com ", user: user1)
 # photo1 = URI.open("https://www.eventim.com.br/campaign/fileadmin/fm_br/campaigns/2024/paul-mccartney/PMC_2024_1080x1669px_v8.png")
@@ -47,3 +53,5 @@ event13 = Event.create!(title: "The weekend", date: "2024-09-07", location: " Pr
 event14 = Event.create!(title: "Bruno Mars", date: "2024-10-04", location: " Praça Roberto Gomes Pedrosa, 01 – Morumbi, São Paulo, São Paulo, Brasil", description: " Prepare-se para uma experiência inesquecível! Bruno Mars vai incendiar o Estádio do Morumbis! ", user: user1)
 
 event15 = Event.create!(title: "Conectado Mumuzinho", date: "2024-10-11", location: " Avenida Ayrton Senna, 3000 - Barra da Tijuca, Rio de Janeiro, Rio de Janeiro, Brasil", description: "Após mais de 10 anos da gravação do primeiro projeto audiovisual, o pagodeiro retorna com um grande álbum, que traz muito do seu amadurecimento enquanto cantor. O DVD Conectado possui 19 músicas inéditas e 7 regravações, acompanhado de participações de grandes nomes do pagode, sertanejo e trap.", user: user1)
+
+puts 'Events created!'
