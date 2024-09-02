@@ -1,0 +1,38 @@
+<div class='d-flex justify-content-between'>
+<div>
+  <h1>My Events</h1>
+</div>
+<div>
+  <%= link_to 'Add new event', new_event_path, class: 'btn btn-primary rounded' %>
+</div>
+</div>
+
+
+<div class="flexbox">
+  <% if @my_events.any? %>
+    <% @my_events.each do |event| %>
+      <div>
+        <div class="card-trip">
+         <%= cl_image_tag(event.photo.key, crop: :fill) %>
+         <div class="card-trip-infos">
+            <div>
+             <h2><%= event.name %></h2>
+             <p>Description: <%= event.description %></p>
+             <p class='mb-3'>Location: <%= event.location %></p>
+             <p class='mb-3'>Date: <%= event.date %></p>
+            <%= link_to "Edit event", edit_event_path(event), class: 'btn btn-sm btn-outline-warning rounded' %>
+            <%= link_to "Remove event", event_path(event), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-danger rounded' %>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No events found.</p>
+  <% end %>
+</div >
+
+<div class="text-center mt-4">
+  <%= link_to 'All events', events_path, class: 'btn btn-outline-primary rounded' %>
+</div>
