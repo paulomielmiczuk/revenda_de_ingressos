@@ -1,9 +1,16 @@
 <% if @events.any? %>
-  <% @events.each do |event| %>
-    <%= cl_image_tag(event.photo.key, crop: :fill) %>
-    <h2><%= event.title %></h2>
-  <% end %>
-
+  <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 277, "gutter": 30 }'>
+    <% @events.each do |event| %>
+      <div class="grid-item">
+        <%= cl_image_tag(event.photo.key, crop: :fill) %>
+        <div class="card-content">
+          <h2><%= event.title %></h2>
+          <p><%= event.location %></p>
+          <p><strong><%= event.date %></strong></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% else %>
   <p>Sorry, no places found!</p>
 <% end %>

@@ -1,0 +1,43 @@
+// .grid {
+//   width: calc(100% + 30px); /* Expand the container width to account for the right margin on the last item */
+//   margin: 0 auto;
+//   margin-right: -30px; /* Offset the right margin added by the grid items */
+// }
+
+// .grid-item {
+//   width: 277px; /* This matches columnWidth */
+//   margin-bottom: 30px; /* Adds vertical space between items */
+//   // margin-right: 30px; /* Adds horizontal space between items */
+//   background-color: white;
+//   border-radius: 10px;
+//   overflow: hidden;
+//   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+// }
+
+// .grid-item img {
+//   width: 100%;
+//   height: auto;
+//   object-fit: cover;
+// }
+
+.grid {
+  width: calc(100% + 30px); /* Expand the container width to account for the right margin on the last item */
+  margin: 0 auto;
+  margin-right: -30px; /* Offset the right margin added by the grid items */
+}
+
+.grid-item {
+  width: 277px; /* Matches columnWidth */
+  margin-bottom: 30px; /* Adds vertical space between items */
+  margin-right: 30px; /* Adds horizontal space between items */
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
