@@ -1,0 +1,11 @@
+<h1>My tickets</h1>
+
+<% if @tickets.any? %>
+  <% @tickets.each do |ticket| %>
+    <%= cl_image_tag(ticket.event.photo.key, crop: :fill) %>
+    <h2><%= ticket.event.title %></h2>
+  <% end %>
+
+<% else %>
+  <p>Sorry, no tickets found!</p>
+<% end %>
