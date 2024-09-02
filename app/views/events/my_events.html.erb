@@ -23,7 +23,7 @@
             <%= link_to "Edit event", edit_event_path(event), class: 'btn btn-sm btn-outline-warning rounded' %>
             <%= link_to "Remove event", event_path(event), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn btn-sm btn-outline-danger rounded' %>
             </div>
-            <h2 class="card-trip-pricing">$<%= event.price %></h2>
+            
           </div>
         </div>
       </div>
