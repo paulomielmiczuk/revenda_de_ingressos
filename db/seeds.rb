@@ -99,8 +99,8 @@ puts 'Events created!'
 
 puts 'Creating tickets...'
 
-ticket1 = Ticket.create!(user: user1, event: event1)
-ticket2 = Ticket.create!(user: user2, event: event3)
-ticket3 = Ticket.create!(user: user4, event: event8)
+ticket1 = Ticket.create!(user: user1, event: event1, quantity: 1, type: "inteira")
+ticket2 = Ticket.create!(user: user2, event: event3, quantity: 2, type: "meia")
+ticket3 = Ticket.create!(user: user4, event: event8, quantity: 5, type: "inteira")
 
 puts 'Tickets created!'
