@@ -1,4 +1,6 @@
 .scrollable-container {
+  display: flex; /* Enables flexbox layout */
+  justify-content: center; /* Centers the grid horizontally */
   overflow-x: auto;
   white-space: nowrap; /* Ensures items are not wrapped */
   width: 100%;
@@ -7,7 +9,7 @@
 .grid {
   display: inline-block; /* Ensures the grid stays on one line */
   /* Adjust the grid width to fit the number of columns */
-  width: calc(277px * 6 + 30px * 5); /* (Number of columns * column width) + (Number of gaps) */
+  width: calc(277px * 5 + 30px * 4); /* (Number of columns * column width) + (Number of gaps) */
 }
 
 .grid-item {
