@@ -1,13 +1,5 @@
 <%= form_for ticket do |form| %>
   <div class="mb-3">
-    <%= form.label :quantity, class: "form-label" %>
-    <%= form.number_field :quantity, class: "form-control" %>
-  </div>
-  <div class="mb-3">
-    <%= form.label :ticket_type, class: "form-label" %>
-    <%= form.select :ticket_type, options_for_select([['Inteira', 'inteira'], ['Meia', 'meia']]), { prompt: 'Select Ticket Type' }, class: 'form-control' %>
-  </div>
-  <div class="mb-3">
     <%= form.submit "Confirm", class: "btn btn-primary" %>
   </div>
 <% end %>
