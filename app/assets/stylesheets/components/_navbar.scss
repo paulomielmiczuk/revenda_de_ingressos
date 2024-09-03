@@ -34,3 +34,25 @@
   margin: 0;
   text-align: center;
 }
+
+.my_events-btn {
+  width: 150px;
+  border-radius: 20px;
+  background: rgb(0, 0, 0);
+  border: 1px solid #000000;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin-right: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.my_events-btn:hover {
+  background-color: #40e29a;
+  border: 1px solid #40E29A;
+  color: #000000;
+}
