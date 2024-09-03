@@ -1,10 +1,19 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: %i[index show]
   def index
     @events = Event.order(:date)
     if params[:query].present?
       @events = @events.search_by_title_and_location(params[:query])
     end
+  end
+
+  def show
+    @event = Event.find(params[:id])
+    @marker = [{
+      lat: @event.latitude,
+      lng: @event.longitude
+      # marker_html: render_to_string(partial: "marker")
+    }]
   end
 
   def new
@@ -38,10 +47,6 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.destroy!
     redirect_to events_path
-  end
-
-  def show
-    @event = Event.find(params[:id])
   end
 
   def my_events
