@@ -2,9 +2,6 @@
 <div>
   <h1>My tickets</h1>
 </div>
-<div>
-  <%= link_to 'Add new ticket', new_place_path, class: 'btn btn-primary rounded' %>
-</div>
 </div>
 
 <div class="flexbox">
@@ -13,9 +10,11 @@
       <div class="card-trip">
         <div class="card-trip-infos">
           <div>
-            <h2><%= ticket.event.title %></h2>
+            <h3><%= ticket.event.title %></h3>
             <p><%= ticket.event.date %></p>
             <p><%= ticket.event.location %></p>
+            <p><%= ticket.quantity %></p>
+            <p><%= ticket.ticket_type %></p>
           </div>
         </div>
       </div>
