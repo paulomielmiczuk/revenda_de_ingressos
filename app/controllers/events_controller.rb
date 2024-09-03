@@ -7,6 +7,15 @@ class EventsController < ApplicationController
     end
   end
 
+  def show
+    @event = Event.find(params[:id])
+    @marker = [{
+      lat: @event.latitude,
+      lng: @event.longitude
+      # marker_html: render_to_string(partial: "marker")
+    }]
+  end
+
   def new
     @event = Event.new
   end
@@ -40,11 +49,6 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
-  def show
-    @event = Event.find(params[:id])
-  end
-end
-
   def my_events
     @my_events = Event.where(user: current_user)
   end
@@ -54,3 +58,4 @@ end
   def event_params
     params.require(:event).permit(:title, :description, :location, :date)
   end
+end
