@@ -2,6 +2,9 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   def index
     @events = Event.order(:date)
+    if params[:query].present?
+      @events = @events.search_by_title_and_location(params[:query])
+    end
   end
 
   def new
@@ -11,7 +14,6 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
-    @event.rating = 3.0
     if @event.save
       redirect_to event_path(@event)
     else

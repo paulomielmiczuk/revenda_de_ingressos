@@ -7,10 +7,29 @@ User.destroy_all
 puts 'Creating users...'
 
 user1 = User.create!(name: "Eventim", email: "eventim@gmail.com", password: "123456")
+profile1 = URI.open("https://play-lh.googleusercontent.com/Qb-5p2u9Bj6IznvgMHf6bJtHXVrXVskKaYbD0kX4Cfve-kNveFZ4xaNX1JkoiGmiNYY")
+user1.photo.attach(io: profile1, filename: "eventim.png", content_type: "image/png")
+user1.save
+
 user2 = User.create!(name: "Ticket Master", email: "ticketmaster@gmail.com", password: "123456")
+profile2 = URI.open("https://media.licdn.com/dms/image/v2/D4D0BAQE3V2w8BWr1kg/company-logo_200_200/company-logo_200_200/0/1720021195008/ticketmasterbr_logo?e=2147483647&v=beta&t=agfv0DzP6oCxxjCeMvqaBQrl4VOpF50dsS4Qfc9blUQ")
+user2.photo.attach(io: profile2, filename: "ticketmaster.png", content_type: "image/png")
+user2.save
+
 user3 = User.create!(name: "T4F", email: "t4f@gmail.com", password: "123456")
+profile3 = URI.open("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRG1rJH-vzt80_7ko4O1BzTq3wo2NqNgguGg&s")
+user3.photo.attach(io: profile3, filename: "t4f.png", content_type: "image/png")
+user3.save
+
 user4 = User.create!(name: "Ingresse", email: "ingresse@gmail.com", password: "123456")
+profile4 = URI.open("https://images.squarespace-cdn.com/content/v1/59d68fe3017db263203e4b79/1507233943500-PL0SQBRD1YH3ZW3J4GDH/Logo%403x.png")
+user4.photo.attach(io: profile4, filename: "ingresse.png", content_type: "image/png")
+user4.save
+
 user5 = User.create!(name: "Sympla", email: "sympla@gmail.com", password: "123456")
+profile5 = URI.open("https://play-lh.googleusercontent.com/fhp6lLE_9QC1jiY3UIKHqBJ9Vcul29L7AuWWlc4Teona2BcmPKGwNDpQjsfKOplzFJ8")
+user5.photo.attach(io: profile5, filename: "sympla.png", content_type: "image/png")
+user5.save
 
 puts 'Users created!'
 
@@ -60,7 +79,7 @@ event11 = Event.create!(title: "PaGGodin Salvador", date: Date.new(2024, 9, 15),
 photo11 = URI.open("https://event-kraken.s3.amazonaws.com/event/posters/73666/large.jpg")
 event11.photo.attach(io: photo11, filename: "paggodin.png", content_type: "image/png")
 
-event12 = Event.create!(title: "'Lenny Kravitz'", date: Date.new(2024, 11, 23), location: "Rua Palestra Itália, 200 - Água Branca, São Paulo, São Paulo, Brasil", description: "O escritor, produtor, multi-instrumentista vencedor de quatro prêmios GRAMMY, Lenny Kravitz, anuncia seu retorno ao Brasil com a inclusão de uma apresentação em São Paulo da turnê mundial Blue Electric Light Tour 2024. O show acontece no dia 23 de novembro, no Allianz Parque", user: user3)
+event12 = Event.create!(title: "Lenny Kravitz", date: "2024-11-23", location: "Rua Palestra Itália, 200 - Água Branca, São Paulo, São Paulo, Brasil", description: "O escritor, produtor, multi-instrumentista vencedor de quatro prêmios GRAMMY, Lenny Kravitz, anuncia seu retorno ao Brasil com a inclusão de uma apresentação em São Paulo da turnê mundial Blue Electric Light Tour 2024. O show acontece no dia 23 de novembro, no Allianz Parque", user: user3)
 photo12 = URI.open("https://www.eventim.com.br/campaign/fileadmin/fm_br/campaigns/2024/lenny-kravitz/LENNYKRAVITZ_Eventim_EmailMkt.png")
 event12.photo.attach(io: photo12, filename: "lennykravitz.png", content_type: "image/png")
 
@@ -77,3 +96,11 @@ photo15 = URI.open("https://cdns-images.dzcdn.net/images/cover/34638a2681def40a6
 event15.photo.attach(io: photo15, filename: "mumuzinho.png", content_type: "image/png")
 
 puts 'Events created!'
+
+puts 'Creating tickets...'
+
+ticket1 = Ticket.create!(user: user1, event: event1)
+ticket2 = Ticket.create!(user: user2, event: event3)
+ticket3 = Ticket.create!(user: user4, event: event8)
+
+puts 'Tickets created!'
