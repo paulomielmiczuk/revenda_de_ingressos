@@ -3,7 +3,7 @@ import Masonry from 'masonry-layout'
 
 // Connects to data-controller="masonry"
 export default class extends Controller {
-  static targets = [ 'image' ]
+  static targets = [ 'image', 'item' ]
 
   connect() {
     const imagesLoaded = Promise.all(
