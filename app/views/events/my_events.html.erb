@@ -8,16 +8,15 @@
 </div>
 
 <% if @my_events.any? %>
-  <div class="scrollable-container">
-    <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 277, "gutter": 30 }'>
+  <div class="scrollable-container mt-3">
+    <div class="grid" data-controller='masonry'>
       <% @my_events.each do |event| %>
-        <div class="grid-item">
-          <%= cl_image_tag(event.photo.key, crop: :fill) %>
+        <div class="grid-item d-none" data-masonry-target='item'>
+          <%= cl_image_tag(event.photo.key, crop: :fill, data: { masonry_target: :image }) %>
           <div class="card-content">
             <h2><%= event.title %></h2>
-            <p>Description: <%= event.description %></p>
-            <p>Location: <%= event.location %></p>
-            <p>Date: <%= event.date %></p>
+            <p><%= event.location %></p>
+            <p><strong><%= event.date.strftime("%d-%m-%Y") %></strong></p>
             <%= link_to "Edit event", edit_event_path(event), class: 'btn btn-sm btn-outline-warning rounded' %>
             <%= link_to "Remove event", event_path(event), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger rounded' %>
           </div>
@@ -26,7 +25,7 @@
     </div>
   </div>
 <% else %>
-  <p>No events found.</p>
+  <p>No events found</p>
 <% end %>
 
 <div class="text-center mt-4">
