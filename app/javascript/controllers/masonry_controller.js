@@ -3,7 +3,7 @@ import Masonry from 'masonry-layout'
 
 // Connects to data-controller="masonry"
 export default class extends Controller {
-  static targets = [ 'image', 'item' ]
+  static targets = [ 'image' ]
 
   connect() {
     const imagesLoaded = Promise.all(
@@ -30,6 +30,5 @@ export default class extends Controller {
         "gutter": 30
       });
     });
-
   }
 }
