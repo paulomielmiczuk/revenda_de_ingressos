@@ -1,32 +1,38 @@
-<div class="row mt-3">
-  <div class='col-sm-12 col-lg-7'>
-    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @event.photo.key, height: 300, crop: :fill %>')">
-    </div>
+<div class="container">
+  <div class="row mt-3">
+    <div class='col-sm-12 col-lg-7'>
+      <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= cl_image_path @event.photo.key, height: 300, crop: :fill %>')">
+      </div>
+      <div class="d-flex my-3 justify-content-between">
+        <%= link_to 'Vender', new_event_ticket_path(@event), class: 'btn btn-primary rounded me-1', style: "width:100%" %>
+        <%= link_to 'Comprar', events_path, class: 'btn btn-primary rounded ms-1', style: "width:100%" %>
+      </div>
 
-    <div class='d-flex mb-3 justify-content-between mt-3'>
-      <div>
-        <div class='d-flex align-items-baseline'>
-          <p class='h4 fw-semibold'><%= @event.title %></p>
+      <div class='d-flex mb-3 justify-content-between mt-3'>
+        <div>
+          <div class='d-flex align-items-baseline'>
+            <p class='h4 fw-semibold'><%= @event.title %></p>
+          </div>
+        </div>
+        <div>
+          <p class='mb-3'><strong><%= @event.date %></strong></p>
         </div>
       </div>
-      <div>
-        <p class='mb-3'><strong><%= @event.date %></strong></p>
+
+        <p class='h6 fw-semibold'>Location: <%= @event.location %></p>
+        <p class='fw-semibold'>Host: <%= @event.user.name %></p>
+        <p>Description: <%= @event.description %></p>
+
+        <%= link_to 'Back to events', events_path, class: 'btn btn-sm btn-outline-primary rounded mb-4' %>
+    </div>
+
+    <div class='col-sm-12 col-lg-5'>
+      <div style="width: 100%; height: 700px;"
+        data-controller="map"
+        data-map-markers-value="<%= @marker.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
 
-      <p class='h6 fw-semibold'>Location: <%= @event.location %></p>
-      <p class='fw-semibold'>Host: <%= @event.user.name %></p>
-      <p>Description: <%= @event.description %></p>
-
-      <%= link_to 'Back to events', events_path, class: 'btn btn-sm btn-outline-primary rounded mb-4' %>
   </div>
-
-  <div class='col-sm-12 col-lg-5'>
-    <div style="width: 100%; height: 700px;"
-      data-controller="map"
-      data-map-markers-value="<%= @marker.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
-  </div>
-
 </div>
