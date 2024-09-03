@@ -12,7 +12,9 @@
     <div class="grid" data-controller='masonry'>
       <% @my_events.each do |event| %>
         <div class="grid-item d-none" data-masonry-target='item'>
-          <%= cl_image_tag(event.photo.key, crop: :fill, data: { masonry_target: :image }) %>
+          <% if event.photo.present? && event.photo.key.present? %>
+            <%= cl_image_tag(event.photo.key, crop: :fill, data: { masonry_target: :image }) %>
+          <% end %>
           <div class="card-content">
             <h2><%= event.title %></h2>
             <p><%= event.location %></p>
