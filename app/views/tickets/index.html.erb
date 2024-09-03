@@ -1,4 +1,11 @@
-<h1 class='mb-3'>My tickets</h1>
+<div class='d-flex justify-content-between'>
+<div>
+  <h1>My tickets</h1>
+</div>
+<div>
+  <%= link_to 'Add new ticket', new_place_path, class: 'btn btn-primary rounded' %>
+</div>
+</div>
 
 <div class="flexbox">
   <% if @tickets.any? %>
@@ -16,4 +23,8 @@
   <% else %>
     <p>No tickets found.</p>
   <% end %>
+</div>
+
+<div class="text-center mt-4">
+  <%= link_to 'All events', events_path, class: 'btn btn-outline-primary rounded' %>
 </div>

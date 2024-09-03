@@ -1,24 +1,9 @@
 <div class="bg-white rounded p-4 shadow-sm">
   <%= simple_form_for @ticket do |f| %>
     <div class="form-group">
-      <%= f.input :title, label: false, placeholder: 'Title', input_html: { class: 'form-control' } %>
+      <%= f.input :quantity, label: false, placeholder: 'Quantity', input_html: { class: 'form-control' } %>
     </div>
     <div class="form-group">
-      <%= f.input :location, label: false, placeholder: 'Location', input_html: { class: 'form-control' } %>
+      <%= f.input :ticket_type, label: false, placeholder: 'Ticket type', input_html: { class: 'form-control' } %>
     </div>
-    <div class="form-group">
-      <%= f.input :description, label: false, as: :text, placeholder: 'Description', input_html: { class: 'form-control' } %>
-    </div>
-    <div class="form-group">
-      <%= f.input :date, label: false, as: :text, placeholder: 'Date', input_html: { class: 'form-control datepicker' } %>
-    </div>
-    <% if @event.new_record? %>
-      <div class="form-group">
-        <%= f.input :photo, label: false, as: :file, input_html: { class: 'form-control-file' } %>
-      </div>
-    <% end %>
-    <div class="form-group text-center">
-      <%= f.button :submit, @event.new_record? ? "Create Event" : "Confirm", class: 'btn btn-primary' %>
-    </div>
-  <% end %>
 </div>
