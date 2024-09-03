@@ -1,8 +1,25 @@
-<h1><%= @event.title %></h1>
-<p>Date: <%= @event.date %></p>
-<p>Location: <%= @event.location %></p>
-<p>Description: <%= @event.description %></p>
-<p>Host: <%= @event.user.name %> </p>
-<%= cl_image_tag(@event.photo.key, crop: :fill) %>
+<div class="container">
+  <div class="row">
+    <div class='col-sm-12 col-lg-7'>
+      <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @event.photo.key, height: 300, crop: :fill %>')">
+      </div>
 
-<%= link_to 'Back to events', events_path %>
+      <div class='d-flex mb-3 justify-content-between mt-3'>
+        <div>
+          <div class='d-flex align-items-baseline'>
+            <p class='h4 fw-semibold'><%= @event.title %></p>
+          </div>
+        </div>
+        <div>
+          <p class='mb-3'><strong><%= @event.date %></strong></p>
+        </div>
+      </div>
+
+        <p class='h6 fw-semibold'>Location: <%= @event.location %></p>
+        <p class='fw-semibold'>Host: <%= @event.user.name %></p>
+        <p>Description: <%= @event.description %></p>
+
+        <%= link_to 'Back to events', events_path, class: 'btn btn-sm btn-outline-primary rounded mb-4' %>
+    </div>
+  </div>
+</div>
