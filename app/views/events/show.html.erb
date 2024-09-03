@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row mt-3">
     <div class='col-sm-12 col-lg-7'>
       <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @event.photo.key, height: 300, crop: :fill %>')">
       </div>
@@ -21,5 +21,14 @@
 
         <%= link_to 'Back to events', events_path, class: 'btn btn-sm btn-outline-primary rounded mb-4' %>
     </div>
+
+    <div class='col-sm-12 col-lg-5'>
+      <div style="width: 100%; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= @marker.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+
   </div>
 </div>

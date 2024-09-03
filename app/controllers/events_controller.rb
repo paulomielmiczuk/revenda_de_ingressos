@@ -9,6 +9,11 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @marker = [{
+      lat: @event.latitude,
+      lng: @event.longitude
+      # marker_html: render_to_string(partial: "marker")
+    }]
   end
 
   def new
