@@ -1,5 +1,7 @@
 class TicketsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @tickets = Ticket.joins(:event).where.not(events: { user_id: current_user.id })
+    @tickets = Ticket.where(user_id: current_user.id)
   end
 end
