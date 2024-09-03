@@ -60,7 +60,7 @@ event11 = Event.create!(title: "PaGGodin Salvador", date: Date.new(2024, 9, 15),
 photo11 = URI.open("https://event-kraken.s3.amazonaws.com/event/posters/73666/large.jpg")
 event11.photo.attach(io: photo11, filename: "paggodin.png", content_type: "image/png")
 
-event12 = Event.create!(title: "'Lenny Kravitz'", date: Date.new(2024, 11, 23), location: "Rua Palestra Itália, 200 - Água Branca, São Paulo, São Paulo, Brasil", description: "O escritor, produtor, multi-instrumentista vencedor de quatro prêmios GRAMMY, Lenny Kravitz, anuncia seu retorno ao Brasil com a inclusão de uma apresentação em São Paulo da turnê mundial Blue Electric Light Tour 2024. O show acontece no dia 23 de novembro, no Allianz Parque", user: user3)
+event12 = Event.create!(title: "Lenny Kravitz", date: "2024-11-23", location: "Rua Palestra Itália, 200 - Água Branca, São Paulo, São Paulo, Brasil", description: "O escritor, produtor, multi-instrumentista vencedor de quatro prêmios GRAMMY, Lenny Kravitz, anuncia seu retorno ao Brasil com a inclusão de uma apresentação em São Paulo da turnê mundial Blue Electric Light Tour 2024. O show acontece no dia 23 de novembro, no Allianz Parque", user: user3)
 photo12 = URI.open("https://www.eventim.com.br/campaign/fileadmin/fm_br/campaigns/2024/lenny-kravitz/LENNYKRAVITZ_Eventim_EmailMkt.png")
 event12.photo.attach(io: photo12, filename: "lennykravitz.png", content_type: "image/png")
 
@@ -77,3 +77,11 @@ photo15 = URI.open("https://cdns-images.dzcdn.net/images/cover/34638a2681def40a6
 event15.photo.attach(io: photo15, filename: "mumuzinho.png", content_type: "image/png")
 
 puts 'Events created!'
+
+puts 'Creating tickets...'
+
+ticket1 = Ticket.create!(user: user1, event: event1)
+ticket2 = Ticket.create!(user: user2, event: event3)
+ticket3 = Ticket.create!(user: user4, event: event8)
+
+puts 'Tickets created!'

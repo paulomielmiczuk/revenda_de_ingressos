@@ -11,7 +11,6 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
-    @event.rating = 3.0
     if @event.save
       redirect_to event_path(@event)
     else
