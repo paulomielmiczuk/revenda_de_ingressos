@@ -50,7 +50,7 @@ class EventsController < ApplicationController
   end
 
   def my_events
-    @my_events = Event.where(user: current_user)
+    @my_events = Event.where(user: current_user).order(:date)
   end
 
   private
