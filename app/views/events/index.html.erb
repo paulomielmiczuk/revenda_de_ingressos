@@ -1,14 +1,16 @@
 <% if @events.any? %>
   <div class="scrollable-container">
-    <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 277, "gutter": 30 }'>
+    <div class="grid" data-controller='masonry'>
       <% @events.each do |event| %>
-        <div class="grid-item">
-          <%= cl_image_tag(event.photo.key, crop: :fill) %>
-          <div class="card-content">
-            <h2><%= event.title %></h2>
-            <p><%= event.location %></p>
-            <p><strong><%= event.date %></strong></p>
-          </div>
+        <div class="grid-item d-none" data-masonry-target='item'>
+          <%= link_to event_path(event), class: 'event-link' do %>
+            <%= cl_image_tag(event.photo.key, crop: :fill, data: { masonry_target: :image }) %>
+            <div class="card-content">
+              <h2><%= event.title %></h2>
+              <p><%= event.location %></p>
+              <p><strong><%= event.date.strftime("%d-%m-%Y") %></strong></p>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>

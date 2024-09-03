@@ -7,16 +7,35 @@ User.destroy_all
 puts 'Creating users...'
 
 user1 = User.create!(name: "Eventim", email: "eventim@gmail.com", password: "123456")
+profile1 = URI.open("https://play-lh.googleusercontent.com/Qb-5p2u9Bj6IznvgMHf6bJtHXVrXVskKaYbD0kX4Cfve-kNveFZ4xaNX1JkoiGmiNYY")
+user1.photo.attach(io: profile1, filename: "eventim.png", content_type: "image/png")
+user1.save
+
 user2 = User.create!(name: "Ticket Master", email: "ticketmaster@gmail.com", password: "123456")
+profile2 = URI.open("https://media.licdn.com/dms/image/v2/D4D0BAQE3V2w8BWr1kg/company-logo_200_200/company-logo_200_200/0/1720021195008/ticketmasterbr_logo?e=2147483647&v=beta&t=agfv0DzP6oCxxjCeMvqaBQrl4VOpF50dsS4Qfc9blUQ")
+user2.photo.attach(io: profile2, filename: "ticketmaster.png", content_type: "image/png")
+user2.save
+
 user3 = User.create!(name: "T4F", email: "t4f@gmail.com", password: "123456")
+profile3 = URI.open("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRG1rJH-vzt80_7ko4O1BzTq3wo2NqNgguGg&s")
+user3.photo.attach(io: profile3, filename: "t4f.png", content_type: "image/png")
+user3.save
+
 user4 = User.create!(name: "Ingresse", email: "ingresse@gmail.com", password: "123456")
+profile4 = URI.open("https://images.squarespace-cdn.com/content/v1/59d68fe3017db263203e4b79/1507233943500-PL0SQBRD1YH3ZW3J4GDH/Logo%403x.png")
+user4.photo.attach(io: profile4, filename: "ingresse.png", content_type: "image/png")
+user4.save
+
 user5 = User.create!(name: "Sympla", email: "sympla@gmail.com", password: "123456")
+profile5 = URI.open("https://play-lh.googleusercontent.com/fhp6lLE_9QC1jiY3UIKHqBJ9Vcul29L7AuWWlc4Teona2BcmPKGwNDpQjsfKOplzFJ8")
+user5.photo.attach(io: profile5, filename: "sympla.png", content_type: "image/png")
+user5.save
 
 puts 'Users created!'
 
 puts 'Creating events...'
 
-event1 = Event.create!(title: "Paul McCartney Got Back", date: Date.new(2024, 10, 15), location: "Rua Palestra Itália, 200 - Água Branca, São Paulo, São Paulo, Brasil", description: "Paul McCartney lançou sua turnê Got Back em 2022, completando 16 apresentações nos Estados Unidos. Em junho deste mesmo ano, fez uma apresentação histórica em Glastonbury, que foi definida pelo jornal British Times como o “melhor show de todos os tempos”. Em 2023, Paul levou a turnê para Austrália e México, fechando o ano com oito shows Brasil – Brasília, Belo Horizonte, São Paulo, Curitiba e Rio de Janeiro. Paul McCartney vem ao Brasil com a banda que o acompanha há vários anos - Paul 'Wix' Wickens (teclados), Brian Ray (baixo/guitarra), Rusty Anderson (guitarra) e Abe Laboriel Jr (bateria). A utilização de tecnologia de áudio e vídeo de última geração garante uma experiência inesquecível em todos os setores das venues selecionadas para as apresentações. Com grandes sucessos como 'Hey Jude', 'Live and Let Die', 'Band on the Run', 'Let It Be' e muitas outras, a experiência de um show ao vivo de Paul McCartney é muito mais do que qualquer amante da música poderia querer de um show de rock: horas dos melhores momentos dos últimos 60 anos de música, dezenas de canções da carreira solo de Paul, do período dos Wings e, claro, catálogos dos Beatles que formaram as trilhas sonoras de nossas vidas. paulmccartneygotback.com ", user: user1)
+event1 = Event.create!(title: "Paul McCartney Got Back", date: Date.new(2024, 10, 15), location: "Avenida Francisco Matarazzo, 1705, - Água Branca, São Paulo, São Paulo, Brasil", description: "Paul McCartney lançou sua turnê Got Back em 2022, completando 16 apresentações nos Estados Unidos. Em junho deste mesmo ano, fez uma apresentação histórica em Glastonbury, que foi definida pelo jornal British Times como o “melhor show de todos os tempos”. Em 2023, Paul levou a turnê para Austrália e México, fechando o ano com oito shows Brasil – Brasília, Belo Horizonte, São Paulo, Curitiba e Rio de Janeiro. Paul McCartney vem ao Brasil com a banda que o acompanha há vários anos - Paul 'Wix' Wickens (teclados), Brian Ray (baixo/guitarra), Rusty Anderson (guitarra) e Abe Laboriel Jr (bateria). A utilização de tecnologia de áudio e vídeo de última geração garante uma experiência inesquecível em todos os setores das venues selecionadas para as apresentações. Com grandes sucessos como 'Hey Jude', 'Live and Let Die', 'Band on the Run', 'Let It Be' e muitas outras, a experiência de um show ao vivo de Paul McCartney é muito mais do que qualquer amante da música poderia querer de um show de rock: horas dos melhores momentos dos últimos 60 anos de música, dezenas de canções da carreira solo de Paul, do período dos Wings e, claro, catálogos dos Beatles que formaram as trilhas sonoras de nossas vidas. paulmccartneygotback.com ", user: user1)
 photo1 = URI.open("https://www.eventim.com.br/campaign/fileadmin/fm_br/campaigns/2024/paul-mccartney/PMC_2024_1080x1669px_v8.png")
 event1.photo.attach(io: photo1, filename: "paul.png", content_type: "image/png")
 
@@ -40,7 +59,7 @@ event6 = Event.create!(title: "Hairspray", date: Date.new(2024, 9, 5), location:
 photo6 = URI.open("https://cooltours.s3.sa-east-1.amazonaws.com/images/preview/57157eec8d07912c019dd7721fe3e4944f0fcfd0597077d5a67fed2aee8676d9.jpg")
 event6.photo.attach(io: photo6, filename: "hairspray.png", content_type: "image/png")
 
-event7 = Event.create!(title: "Cateano & Bethânia", date: Date.new(2024, 12, 14), location: "Rua Palestra Itália, 200 - Água Branca, São Paulo, São Paulo, Brasil", description: "A turnê Caetano & Bethânia tem um significado especial para a música popular brasileira, para a história dos dois irmãos e para os fãs que sonham em vê-los em um só espetáculo. Nascidos em Santo Amaro, no recôncavo baiano, Caetano Veloso e Maria Bethânia são reconhecidos como artistas essenciais à formação cultural de várias gerações, com trajetórias projetadas para além da música, inspirando criadores em todas as partes e em todas as artes.", user: user2)
+event7 = Event.create!(title: "Cateano & Bethânia", date: Date.new(2024, 12, 14), location: "Avenida Francisco Matarazzo, 1705, - Água Branca, São Paulo, São Paulo, Brasil", description: "A turnê Caetano & Bethânia tem um significado especial para a música popular brasileira, para a história dos dois irmãos e para os fãs que sonham em vê-los em um só espetáculo. Nascidos em Santo Amaro, no recôncavo baiano, Caetano Veloso e Maria Bethânia são reconhecidos como artistas essenciais à formação cultural de várias gerações, com trajetórias projetadas para além da música, inspirando criadores em todas as partes e em todas as artes.", user: user2)
 photo7 = URI.open('https://cdn.getcrowder.com/images/cc54ae73-461a-43ed-ac31-6998b17692a0-cb1440x540novo.png')
 event7.photo.attach(io: photo7, filename: "caetanoebethania.png", content_type: "image/png")
 
@@ -48,7 +67,7 @@ event8 = Event.create!(title: "Gilberto Gil | Tempo Rei", date: Date.new(2025, 3
 photo8 = URI.open("https://www.eventim.com.br/campaign/fileadmin/fm_br/campaigns/2024/gil-tempo-rei/GIL_TEMPO_REI_KV_Eventim_LP.png")
 event8.photo.attach(io: photo8, filename: "gil.png", content_type: "image/png")
 
-event9 = Event.create!(title: "Allianz Parque Experience Tour", date: Date.new(2024, 11, 17), location: "Rua Palestra Itália, 200 - Água Branca, São Paulo, São Paulo, Brasil", description: "Já imaginou viajar pela história do Palmeiras, fazer o caminho dos vestiários até o gramado e viver uma experiência completa do que é estar na arena mais moderna da América Latina? Desde a sua fundação, em novembro de 2014, o Allianz Parque revolucionou o mercado do entretenimento no Brasil ao criar um espaço único no país, em que a maior paixão nacional, o futebol, convive de forma harmônica com os shows, sendo a arena que mais recebeu eventos no mundo em 2017 e 2018.", user: user5)
+event9 = Event.create!(title: "Allianz Parque Experience Tour", date: Date.new(2024, 11, 17), location: "Avenida Francisco Matarazzo, 1705, - Água Branca, São Paulo, São Paulo, Brasil", description: "Já imaginou viajar pela história do Palmeiras, fazer o caminho dos vestiários até o gramado e viver uma experiência completa do que é estar na arena mais moderna da América Latina? Desde a sua fundação, em novembro de 2014, o Allianz Parque revolucionou o mercado do entretenimento no Brasil ao criar um espaço único no país, em que a maior paixão nacional, o futebol, convive de forma harmônica com os shows, sendo a arena que mais recebeu eventos no mundo em 2017 e 2018.", user: user5)
 photo9 = URI.open("https://assets.bileto.sympla.com.br/eventmanager/production/2n331o8t2gap3vmk5dqdfsf2dsho1kaqf2cuhtu5qf17a6k4jqpncg1p6bfe6jacm8ao9qcg8lbmqa8vgnvma1t6n4baodfk9bklmua.webp")
 event9.photo.attach(io: photo9, filename: "allianzparque.png", content_type: "image/png")
 
@@ -60,7 +79,7 @@ event11 = Event.create!(title: "PaGGodin Salvador", date: Date.new(2024, 9, 15),
 photo11 = URI.open("https://event-kraken.s3.amazonaws.com/event/posters/73666/large.jpg")
 event11.photo.attach(io: photo11, filename: "paggodin.png", content_type: "image/png")
 
-event12 = Event.create!(title: "Lenny Kravitz", date: "2024-11-23", location: "Rua Palestra Itália, 200 - Água Branca, São Paulo, São Paulo, Brasil", description: "O escritor, produtor, multi-instrumentista vencedor de quatro prêmios GRAMMY, Lenny Kravitz, anuncia seu retorno ao Brasil com a inclusão de uma apresentação em São Paulo da turnê mundial Blue Electric Light Tour 2024. O show acontece no dia 23 de novembro, no Allianz Parque", user: user3)
+event12 = Event.create!(title: "Lenny Kravitz", date: "2024-11-23", location: "Avenida Francisco Matarazzo, 1705, - Água Branca, São Paulo, São Paulo, Brasil", description: "O escritor, produtor, multi-instrumentista vencedor de quatro prêmios GRAMMY, Lenny Kravitz, anuncia seu retorno ao Brasil com a inclusão de uma apresentação em São Paulo da turnê mundial Blue Electric Light Tour 2024. O show acontece no dia 23 de novembro, no Allianz Parque", user: user3)
 photo12 = URI.open("https://www.eventim.com.br/campaign/fileadmin/fm_br/campaigns/2024/lenny-kravitz/LENNYKRAVITZ_Eventim_EmailMkt.png")
 event12.photo.attach(io: photo12, filename: "lennykravitz.png", content_type: "image/png")
 

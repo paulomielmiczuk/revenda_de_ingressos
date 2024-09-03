@@ -10,3 +10,49 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.search {
+  width: 600px;
+  padding: 10px;
+  border-radius: 10px 0px 0px 10px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.search:hover {
+  box-shadow: #373A40;
+}
+
+.search-btn{
+  width: 100px;
+  border-radius: 0px 10px 10px 0px;
+  background: rgb(0, 0, 0);
+  border: #000000;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 0;
+  text-align: center;
+}
+
+.my_events-btn {
+  width: 150px;
+  border-radius: 20px;
+  background: rgb(0, 0, 0);
+  border: 1px solid #000000;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin-right: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.my_events-btn:hover {
+  background-color: #40e29a;
+  border: 1px solid #40E29A;
+  color: #000000;
+}
