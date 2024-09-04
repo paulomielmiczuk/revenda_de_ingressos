@@ -7,7 +7,10 @@
       <% end %>
 
       <div class="d-flex my-3 justify-content-between">
-        <%= link_to 'Vender', new_event_ticket_path(@event), class: 'btn btn-primary rounded me-1', style: "width:100%" %>
+
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sellTicketModal">
+          Sell
+        </button>
         <%= link_to 'Comprar', new_event_order_path(@event), class: 'btn btn-primary rounded ms-1', style: "width:100%" %>
       </div>
 
@@ -37,15 +40,18 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="ticketModal" tabindex="-1" aria-labelledby="ticketModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+
+  <div class="modal fade" id="sellTicketModal" tabindex="-1" role="dialog" aria-labelledby="sellTicketModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="ticketModalLabel">Select the ticket(s) type</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="sellTicketModalLabel">Sell Ticket</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
-        <%= render 'tickets/form', ticket: @ticket %>
+        <%= render 'tickets/form', ticket: @ticket, event: @event %>
       </div>
     </div>
   </div>
