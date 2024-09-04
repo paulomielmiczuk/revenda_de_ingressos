@@ -20,7 +20,7 @@ class TicketsController < ApplicationController
     @ticket.event = @event
     @ticket.user = current_user
     if @ticket.save
-      redirect_to tickets_path
+      redirect_to events_path, notice: 'Ticket uploaded'
     else
       render 'new', status: :unprocessable_entity
     end
@@ -35,6 +35,6 @@ class TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:id)
+    params.require(:ticket).permit(:ticket_type)
   end
 end
