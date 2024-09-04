@@ -17,7 +17,9 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
+    if current_user.company? == true
+      @event = Event.new
+    end
   end
 
   def create
