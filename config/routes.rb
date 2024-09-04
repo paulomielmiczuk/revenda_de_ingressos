@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :events do
     resources :tickets, only: %i[new create]
+    resources :orders, only: %i[new create]
   end
+
   resources :tickets, only: %i[index]
+  resources :orders, only: %i[index]
+  patch "orders", to: "orders#checkout", as: 'checkout'
 end
