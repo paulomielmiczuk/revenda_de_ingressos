@@ -1,0 +1,15 @@
+<h1>Your Orders</h1>
+
+<% if @orders.present? %>
+  <ul>
+    <% @orders.each do |order| %>
+      <li>
+        Ticket: <%= order.ticket.ticket_type %> - Quantity: <%= order.quantity %>
+      </li>
+    <% end %>
+  </ul>
+
+   <%= link_to 'Checkout', checkout_path, data: { turbo_method: :patch, turbo_confirm: 'Are you sure?' }, class: 'btn btn-primary' %>
+<% else %>
+  <p>No orders to process.</p>
+<% end %>

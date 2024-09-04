@@ -5,6 +5,10 @@ class TicketsController < ApplicationController
     @tickets = Ticket.where(user_id: current_user.id)
   end
 
+  def show
+    @ticket = Ticket.find(params[:id])
+  end
+
   def new
     @event = Event.find(params[:event_id])
     @ticket = Ticket.new
@@ -20,6 +24,12 @@ class TicketsController < ApplicationController
     else
       render 'new', status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @ticket = Ticket.find(params[:id])
+    @ticket.destroy!
+    redirect_to tickets_path
   end
 
   private
