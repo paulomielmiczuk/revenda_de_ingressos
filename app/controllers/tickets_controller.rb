@@ -2,7 +2,7 @@ class TicketsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tickets = Ticket.where(user_id: current_user.id, available: true)
+    @tickets = Ticket.where(user_id: current_user.id, available: true).group_by(&:event)
   end
 
   def show
@@ -31,7 +31,7 @@ class TicketsController < ApplicationController
         Ticket.create!(ticket_type: 'meia', event: @event, user: current_user, available: true)
       end
     end
-    redirect_to events_path, notice: 'Tickets added!'
+    redirect_to tickets_path, notice: 'Tickets added!'
   end
 
   def destroy
