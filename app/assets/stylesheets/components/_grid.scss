@@ -1,21 +1,21 @@
 .scrollable-container {
-  display: flex; /* Enables flexbox layout */
-  justify-content: center; /* Centers the grid horizontally */
+  display: flex;
+  justify-content: center;
   overflow-x: auto;
-  white-space: nowrap; /* Ensures items are not wrapped */
+  white-space: nowrap;
   width: 100%;
 }
 
 .grid {
-  display: inline-block; /* Ensures the grid stays on one line */
-  /* Adjust the grid width to fit the number of columns */
-  width: calc(277px * 5 + 30px * 4); /* (Number of columns * column width) + (Number of gaps) */
+  display: inline-block;
+
+  width: calc(277px * 5 + 30px * 4);
 }
 
 .grid-item {
-  width: 277px; /* Matches columnWidth */
-  margin-bottom: 30px; /* Adds vertical space between items */
-  margin-right: 30px; /* Adds horizontal space between items */
+  width: 277px;
+  margin-bottom: 30px;
+  margin-right: 30px;
   background-color: white;
   border-radius: 10px;
   overflow: hidden;
@@ -30,26 +30,26 @@
 
 // .scrollable-container {
 //   overflow-x: auto;
-//   white-space: nowrap; /* Ensures items are not wrapped */
+//   white-space: nowrap;
 //   width: 100%;
-//   position: relative; /* Necessary for the absolute positioning of items */
+//   position: relative;
 // }
 
 // .grid {
-//   display: flex; /* Change from inline-block to flex */
-//   width: calc(277px * 6 + 30px * 5); /* Initial width to fit 6 columns */
-//   transition: transform 0.3s ease; /* Smooth transition for scroll */
+//   display: flex;
+//   width: calc(277px * 6 + 30px * 5);
+//   transition: transform 0.3s ease;
 // }
 
 // .grid-item {
-//   width: 277px; /* Matches columnWidth */
-//   margin-bottom: 30px; /* Adds vertical space between items */
-//   margin-right: 30px; /* Adds horizontal space between items */
+//   width: 277px;
+//   margin-bottom: 30px;
+//   margin-right: 30px;
 //   background-color: white;
 //   border-radius: 10px;
 //   overflow: hidden;
 //   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-//   display: inline-block; /* Ensures items stay in a row */
+//   display: inline-block; 
 // }
 
 // .grid-item img {
