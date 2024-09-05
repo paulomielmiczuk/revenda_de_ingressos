@@ -53,6 +53,8 @@ gem "sassc-rails"
 gem "cloudinary"
 gem "pg_search"
 gem "geocoder"
+gem 'money-rails'
+gem 'stripe'
 
 group :development, :test do
   gem "dotenv-rails"
