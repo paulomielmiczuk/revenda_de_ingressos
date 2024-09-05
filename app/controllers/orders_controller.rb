@@ -3,11 +3,37 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.where(user: current_user, processed: false)
+    @total_price = @orders.sum { |order| order.ticket.price_cents * order.quantity } / 100.0
   end
 
-  def checkout
+  def create_checkout_session
     @orders = Order.where(user: current_user, processed: false)
+    @total_price = @orders.sum { |order| order.ticket.price_cents * order.quantity }
 
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: @orders.map do |order|
+        {
+          price_data: {
+            currency: 'brl',
+            product_data: {
+              name: order.ticket.ticket_type,
+            },
+            unit_amount: order.ticket.price_cents,
+          },
+          quantity: order.quantity,
+        }
+      end,
+      mode: 'payment',
+      success_url: "#{root_url}orders/success",
+      cancel_url: "#{root_url}orders/cancel"
+    )
+
+    redirect_to session.url, allow_other_host: true
+  end
+
+  def success
+    @orders = Order.where(user: current_user, processed: false)
     @orders.each do |order|
       order.update(processed: true)
       ticket = order.ticket
@@ -15,6 +41,10 @@ class OrdersController < ApplicationController
     end
 
     redirect_to orders_path, notice: 'Your orders have been successfully processed.'
+  end
+
+  def cancel
+    redirect_to orders_path, alert: 'Payment was canceled.'
   end
 
   def new
@@ -40,6 +70,12 @@ class OrdersController < ApplicationController
     end
 
     redirect_to orders_path, notice: 'Your order has been placed successfully.'
+  end
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy!
+    redirect_to orders_path
   end
 
 end
