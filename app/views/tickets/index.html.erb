@@ -1,28 +1,30 @@
-<h1 class='mb-3'>Tickets for sale</h1>
+<div class="container">
+  <h1 class='mb-3'>Tickets</h1>
 
-<div class="flexbox">
-  <% if @tickets.present? %>
-    <% @tickets.each do |event, tickets| %>
-      <h2><%= event.title %></h2>
-      <p><%= event.date %></p>
-      <p><%= event.location %></p>
+  <div class="flexbox">
+    <% if @tickets.present? %>
+      <% @tickets.each do |event, tickets| %>
+        <h2><%= event.title %></h2>
+        <p><%= event.date %></p>
+        <p><%= event.location %></p>
 
-      <% tickets_by_type = tickets.group_by(&:ticket_type) %>
-      <% tickets_by_type.each do |ticket_type, tickets_of_type| %>
-    <ul>
-      <% tickets_of_type.each do |ticket| %>
-        <li>
-          Ticket: <%= ticket.ticket_type %> - <%= humanized_money_with_symbol(ticket.price) %>
-        </li>
+        <% tickets_by_type = tickets.group_by(&:ticket_type) %>
+        <% tickets_by_type.each do |ticket_type, tickets_of_type| %>
+      <ol>
+        <% tickets_of_type.each do |ticket| %>
+          <li>
+            Ticket: <%= ticket.ticket_type %> - <%= humanized_money_with_symbol(ticket.price) %>
+          </li>
+        <% end %>
+      </ol>
       <% end %>
-    </ul>
+      <% end %>
+    <% else %>
+      <p>No tickets to sell!</p>
     <% end %>
-    <% end %>
-  <% else %>
-    <p>No tickets to sell!.</p>
-  <% end %>
-</div>
+  </div>
 
-<div class="text-center mt-4">
-  <%= link_to 'All events', events_path, class: 'btn btn-outline-primary rounded' %>
+  <div class="text-center mt-4">
+    <%= link_to 'All events', events_path, class: 'btn btn-outline-primary rounded' %>
+  </div>
 </div>

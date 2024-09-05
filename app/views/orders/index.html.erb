@@ -1,22 +1,31 @@
-<h1>Your Orders</h1>
+<div class="container">
+  <h1>Your Orders</h1>
 
-<% if @orders.present? %>
-  <ul>
-    <% @orders.each do |order| %>
-      <li>
-        Ticket: <%= order.ticket.ticket_type %> (<%= number_to_currency(order.ticket.price_cents / 100.0) %>) - Quantity: <%= order.quantity %>
-        <%= link_to 'Remove', order_path(order), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-      </li>
+  <% if @orders.present? %>
+    <% @orders.each do |event, orders| %>
+      <div class="event-group">
+        <h2><%= event.title %></h2>
+        <p><%= event.date %></p>
+        <p><%= event.location %></p>
+
+        <ul>
+          <% orders.each do |order| %>
+            <li>
+              Ticket: <%= order.ticket.ticket_type %> (<%= number_to_currency(order.ticket.price_cents / 100.0) %>) - Quantity: <%= order.quantity %>
+              <%= link_to 'Remove', order_path(order), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
-  </ul>
 
-  <h2>Total Price: <%= number_to_currency(@total_price) %></h2>
+    <h2>Total Price: <%= number_to_currency(@total_price) %></h2>
 
-  <%= form_with url: create_checkout_session_path, data: { turbo_method: :post, turbo: false }, local: true do %>
-    <%= submit_tag 'Checkout', class: 'btn btn-primary' %>
+    <%= form_with url: create_checkout_session_path, data: { turbo_method: :post, turbo: false }, local: true do %>
+      <%= submit_tag 'Checkout', class: 'btn btn-primary' %>
+    <% end %>
+
+  <% else %>
+    <p>No orders to process!</p>
   <% end %>
-
-
-<% else %>
-  <p>No orders to process.</p>
-<% end %>
+</div>
