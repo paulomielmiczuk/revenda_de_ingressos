@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" data-controller="selling-button">
   <h1 class='mb-3'>Tickets</h1>
 
   <div class="tickets-container">
@@ -7,13 +7,19 @@
         <div class='card-ticket'>
           <div class="cut-left"></div>
           <%= cl_image_tag(ticket.event.photo.key, crop: :fill) %>
-          <div class="card-ticket-infos">
+          <div class="card-ticket-infos" data-selling-button-target="ticket">
             <h2><%= ticket.event.title %></h2>
-            <p><strong>Date:</strong> <%= ticket.event.date.strftime("%d-%m-%Y") %></p>
-            <p><strong>Ticket Type:</strong> <%= ticket.ticket_type %></p>
-            <p><strong>Price:</strong> <%= humanized_money_with_symbol(ticket.price) %></p>
+            <p>Date: <strong><%= ticket.event.date.strftime("%d-%m-%Y") %></strong></p>
+            <p>Type: <strong><%= ticket.ticket_type %></strong></p>
+            <p>Price: <strong><%= humanized_money_with_symbol(ticket.price) %></strong></p>
+             <% if ticket.available == false %>
+              <button class='sell'>Sell</button>
+            <% end %>
           </div>
           <div class="cut-right"></div>
+           <% if ticket.available %>
+            <button class="selling" data-action="click->selling-button#cancel">SELLING</button>
+          <% end %>
         </div>
       <% end %>
     <% else %>
