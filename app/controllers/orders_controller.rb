@@ -2,8 +2,8 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @orders = Order.where(user: current_user, processed: false)
-    @total_price = @orders.sum { |order| order.ticket.price_cents * order.quantity } / 100.0
+    @orders = Order.where(user: current_user).includes(:ticket).group_by { |order| order.ticket.event }
+    @total_price = @orders.values.flatten.sum { |order| order.ticket.price_cents * order.quantity } / 100.0
   end
 
   def create
