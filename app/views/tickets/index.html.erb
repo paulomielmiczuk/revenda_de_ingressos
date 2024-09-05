@@ -9,17 +9,11 @@
           <h2><%= ticket.event.title %></h2>
             <p><%= ticket.event.date %></p>
             <p><%= ticket.event.location %></p>
-<<<<<<< HEAD
             <p><%= ticket.ticket_type %> - <%= humanized_money_with_symbol(ticket.price) %></p>
           </div>
         </div>
       </div>
     <% end %>
-=======
-        </li>
-      <% end %>
-    </ul>
->>>>>>> master
   <% else %>
     <p>No tickets to sell!.</p>
   <% end %>
