@@ -1,8 +1,5 @@
 <div class="bg-white rounded p-4 shadow-sm">
-  <h1>New Order</h1>
-
-  <hr>
-    <%= @event.title %>
+    <h6><strong><%= @event.title %></strong></h6>
   <hr>
 
   <%= simple_form_for [@event, @order] do |form| %>
@@ -16,7 +13,7 @@
     <% end %>
 
     <%= form.hidden_field :event_id, value: @event.id %>
-    <%= form.hidden_field :user_id, value: @order.user.id %>
+    <%# form.hidden_field :user_id, value: @order.user.id %>
 
     <%= form.submit 'Create Order', class: 'btn btn-primary' %>
   <% end %>

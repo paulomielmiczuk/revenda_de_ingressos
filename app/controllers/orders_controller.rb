@@ -6,6 +6,30 @@ class OrdersController < ApplicationController
     @total_price = @orders.sum { |order| order.ticket.price_cents * order.quantity } / 100.0
   end
 
+  def create
+    @event = Event.find(params[:order][:event_id])
+    ticket_types = @event.tickets.group(:ticket_type).count
+    order_params = params[:order]
+
+    ticket_types.each_key do |ticket_type|
+      quantity = order_params["#{ticket_type}_quantity"].to_i
+      if quantity.positive?
+        tickets = Ticket.where(event: @event, ticket_type:).limit(quantity)
+        tickets.each do |ticket|
+          Order.create!(ticket:, user: current_user, quantity: 1, processed: false)
+        end
+      end
+    end
+
+    redirect_to orders_path, notice: 'Your order has been placed successfully.'
+  end
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy!
+    redirect_to orders_path
+  end
+
   def create_checkout_session
     @orders = Order.where(user: current_user, processed: false)
     @total_price = @orders.sum { |order| order.ticket.price_cents * order.quantity }
@@ -45,30 +69,6 @@ class OrdersController < ApplicationController
 
   def cancel
     redirect_to orders_path, alert: 'Payment was canceled.'
-  end
-
-  def create
-    @event = Event.find(params[:order][:event_id])
-    ticket_types = @event.tickets.group(:ticket_type).count
-    order_params = params[:order]
-
-    ticket_types.each_key do |ticket_type|
-      quantity = order_params["#{ticket_type}_quantity"].to_i
-      if quantity.positive?
-        tickets = Ticket.where(event: @event, ticket_type:).limit(quantity)
-        tickets.each do |ticket|
-          Order.create!(ticket:, user: current_user, quantity: 1, processed: false)
-        end
-      end
-    end
-
-    redirect_to orders_path, notice: 'Your order has been placed successfully.'
-  end
-
-  def destroy
-    @order = Order.find(params[:id])
-    @order.destroy!
-    redirect_to orders_path
   end
 
 end
