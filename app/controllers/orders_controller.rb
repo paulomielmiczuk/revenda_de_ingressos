@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
       ticket.update(user: current_user, available: false)
     end
 
-    redirect_to orders_path, notice: 'Your orders have been successfully processed.'
+    redirect_to tickets_path, notice: 'Your orders have been successfully processed.'
   end
 
   def cancel
