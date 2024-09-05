@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :events do
     resources :tickets, only: %i[new create destroy]
-    resources :orders, only: %i[new create]
+    resources :orders, only: %i[create]
   end
 
   resources :tickets, only: %i[index]
