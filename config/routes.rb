@@ -17,8 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :tickets, only: %i[index]
-  resources :orders, only: %i[index]
-
+  resources :orders, only: %i[index destroy]
   patch "orders", to: "orders#checkout", as: 'checkout'
   post 'create_checkout_session', to: 'orders#create_checkout_session'
   get 'orders/success', to: 'orders#success'
