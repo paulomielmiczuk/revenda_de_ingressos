@@ -5,6 +5,7 @@
     <% @orders.each do |order| %>
       <li>
         Ticket: <%= order.ticket.ticket_type %> (<%= number_to_currency(order.ticket.price_cents / 100.0) %>) - Quantity: <%= order.quantity %>
+        <%= link_to 'Remove', order_path(order), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
       </li>
     <% end %>
   </ul>
