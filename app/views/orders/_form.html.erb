@@ -1,23 +1,26 @@
 <div class="bg-white rounded p-4 shadow-sm">
-  <h1>New Order</h1>
-
-  <hr>
-    <%= @event.title %>
+  <h6><strong><%= @event.title %></strong></h6>
   <hr>
 
-  <%= simple_form_for [@event, @order] do |form| %>
-    <% @tickets_by_type.each do |ticket_type, count| %>
-      <div class="form-group">
-        <%= form.input "#{ticket_type}_quantity", label: "#{ticket_type} - #{count} available",
-                      as: :integer,
-                      input_html: { min: 0, max: count, step: 1, value: 0 },
-                      required: false %>
-      </div>
+  <% if @tickets_by_type.values.any?(&:positive?) %>
+    <%= simple_form_for [@event, @order] do |form| %>
+      <% @tickets_by_type.each do |ticket_type, count| %>
+        <% if count > 0 %>
+          <div class="form-group">
+            <%= form.input "#{ticket_type}_quantity", label: "#{ticket_type} - #{count} available",
+                          as: :integer,
+                          input_html: { min: 0, max: count, step: 1, value: 0 },
+                          required: false %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <%= form.hidden_field :event_id, value: @event.id %>
+      <%# form.hidden_field :user_id, value: @order.user.id %>
+
+      <%= form.submit 'Create Order', class: 'btn btn-primary' %>
     <% end %>
-
-    <%= form.hidden_field :event_id, value: @event.id %>
-    <%# form.hidden_field :user_id, value: @order.user.id %>
-
-    <%= form.submit 'Create Order', class: 'btn btn-primary' %>
+  <% else %>
+    <p>No tickets available for this event</p>
   <% end %>
 </div>
