@@ -2,17 +2,21 @@
 
 <div class="flexbox">
   <% if @tickets.present? %>
+    <% @tickets.each do |event, tickets| %>
+      <h2><%= event.title %></h2>
+      <p><%= event.date %></p>
+      <p><%= event.location %></p>
+
+      <% tickets_by_type = tickets.group_by(&:ticket_type) %>
+      <% tickets_by_type.each do |ticket_type, tickets_of_type| %>
     <ul>
-      <% @tickets.each do |ticket| %>
+      <% tickets_of_type.each do |ticket| %>
         <li>
-          Ticket: <%= ticket.ticket_type %>
-          <h2><%= ticket.event.title %></h2>
-            <p><%= ticket.event.date %></p>
-            <p><%= ticket.event.location %></p>
-            <p><%= ticket.ticket_type %> - <%= humanized_money_with_symbol(ticket.price) %></p>
-          </div>
-        </div>
-      </div>
+          Ticket: <%= ticket.ticket_type %> - <%= humanized_money_with_symbol(ticket.price) %>
+        </li>
+      <% end %>
+    </ul>
+    <% end %>
     <% end %>
   <% else %>
     <p>No tickets to sell!.</p>
