@@ -2,31 +2,18 @@
   <h1 class='mb-3'>Tickets</h1>
 
   <% if @tickets.present? %>
-    <% @tickets.each do |event, tickets| %>
-      <div class='card-content'>
-      <h2><%= event.title %></h2>
-      <p><%= event.location %></p>
-      <p><strong><%= event.date.strftime("%d-%m-%Y") %></strong></p>
-
-      <% tickets_by_type = tickets.group_by(&:ticket_type) %>
-      <% tickets_by_type.each do |ticket_type, tickets_of_type| %>
-        <ol>
-          <% tickets_of_type.each do |ticket| %>
-            <li>
-              <%= ticket.ticket_type %> - <%= humanized_money_with_symbol(ticket.price) %>
-              <%= link_to 'Sell' %>
-            </li>
-          <% end %>
-        </ol>
-      <% end %>
+    <% @tickets.each do |ticket| %>
+      <div class='card-ticket'>
+         <%= cl_image_tag(ticket.event.photo.key, crop: :fill) %>
+        <div class="card-product-infos">
+          <h2><%= ticket.event.title %></h2>
+          <p><strong>Date:</strong> <%= ticket.event.date.strftime("%d-%m-%Y") %></p>
+          <p><strong>Ticket Type:</strong> <%= ticket.ticket_type %></p>
+          <p><strong>Price:</strong> <%= humanized_money_with_symbol(ticket.price) %></p>
+        </div>
       </div>
     <% end %>
-
-    <% else %>
-      <p>No tickets to sell!</p>
-    <% end %>
-
-  <div class="text-center mt-4">
-    <%= link_to 'All events', events_path, class: 'btn btn-outline-primary rounded' %>
-  </div>
+  <% else %>
+    <p>No tickets available.</p>
+  <% end %>
 </div>
