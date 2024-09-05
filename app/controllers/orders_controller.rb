@@ -42,4 +42,10 @@ class OrdersController < ApplicationController
     redirect_to orders_path, notice: 'Your order has been placed successfully.'
   end
 
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy!
+    redirect_to orders_path
+  end
+
 end
