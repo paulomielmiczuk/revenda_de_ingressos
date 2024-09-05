@@ -16,7 +16,7 @@
     <% end %>
 
     <%= form.hidden_field :event_id, value: @event.id %>
-    <%= form.hidden_field :user_id, value: @order.user.id %>
+    <%# form.hidden_field :user_id, value: @order.user.id %>
 
     <%= form.submit 'Create Order', class: 'btn btn-primary' %>
   <% end %>
