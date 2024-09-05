@@ -1,22 +1,23 @@
 <div class="container">
-  <h1>Your Orders</h1>
+  <h1 class='mb-3'>Orders</h1>
 
   <% if @orders.present? %>
     <% @orders.each do |event, orders| %>
-      <div class="event-group">
+      <div class='card-content'>
         <h2><%= event.title %></h2>
-        <p><%= event.date %></p>
         <p><%= event.location %></p>
+        <p><strong><%= event.date.strftime("%d-%m-%Y") %></strong></p>
 
-        <ul>
+        <ol>
           <% orders.each do |order| %>
             <li>
-              Ticket: <%= order.ticket.ticket_type %> (<%= number_to_currency(order.ticket.price_cents / 100.0) %>) - Quantity: <%= order.quantity %>
-              <%= link_to 'Remove', order_path(order), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+              <%= order.ticket.ticket_type %> - <%= humanized_money_with_symbol(order.ticket.price) %>
+              <%= link_to 'Remove', order_path(order), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
             </li>
           <% end %>
-        </ul>
+        </ol>
       </div>
+
     <% end %>
 
     <h2>Total Price: <%= number_to_currency(@total_price) %></h2>

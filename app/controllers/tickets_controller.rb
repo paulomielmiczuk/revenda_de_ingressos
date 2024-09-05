@@ -2,7 +2,7 @@ class TicketsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tickets = Ticket.where(user_id: current_user.id, available: true).group_by(&:event)
+    @tickets = Ticket.where(user: current_user, available: true).group_by(&:event)
   end
 
   def show
