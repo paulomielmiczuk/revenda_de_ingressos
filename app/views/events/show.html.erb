@@ -10,7 +10,7 @@
         <button type="button" class="btn btn-primary rounded me-1" data-bs-toggle="modal" data-bs-target="#sellTicketModal" style='width:100%'>
           Sell
         </button>
-        <button type="button" class="btn btn-primary rounded ms-1" data-bs-toggle="modal" data-bs-target="#buyTicketModal" style='width:100%'>
+        <button type="button" class="btn btn-primary rounded ms-1" data-bs-toggle="modal" data-bs-target="#buyTicketModal" style='width:100%' <%= @tickets_by_type.values.sum == 0 ? 'disabled' : '' %>>
           Buy
         </button>
       </div>
