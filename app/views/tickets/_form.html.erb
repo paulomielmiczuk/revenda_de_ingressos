@@ -1,6 +1,21 @@
 <div class="bg-white rounded p-4 shadow-sm">
-  <%= simple_form_for([@event, @ticket]) do |f| %>
-    <%= f.input :ticket_type, collection: [['Inteira', 'inteira'], ['Meia', 'meia']], label: "Ticket Type", input_html: { class: "form-control" }, include_blank: false %>
-    <%= f.button :submit, "Sell Tickets", class: "btn btn-primary" %>
+  <h1>Sell Tickets</h1>
+
+  <hr>
+  event: <%= @event.title %>
+  <hr>
+
+  <%= simple_form_for([@event, @ticket]) do |form| %>
+    <div class="form-group">
+      <%= form.input 'normal_ticket_quantity', label: 'Inteira - Quantidade', as: :integer, input_html: { min: 0, step: 1, value: 0 }, required: false %>
+    </div>
+
+    <div class="form-group">
+      <%= form.input 'half_price_quantity', label: 'Meia - Quantidade', as: :integer, input_html: { min: 0, step: 1, value: 0 }, required: false %>
+    </div>
+
+    <%= form.hidden_field :event_id, value: @event.id %>
+
+    <%= form.submit 'Sell Tickets', class: 'btn btn-primary mt-3' %>
   <% end %>
 </div>
