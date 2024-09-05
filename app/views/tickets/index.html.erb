@@ -1,20 +1,19 @@
-<h1 class='mb-3'>My tickets</h1>
+<h1 class='mb-3'>Tickets for sale</h1>
 
 <div class="flexbox">
-  <% if @tickets.any? %>
-    <% @tickets.each do |ticket| %>
-      <div class="card-trip">
-        <div class="card-trip-infos">
-          <div>
-            <h2><%= ticket.event.title %></h2>
+  <% if @tickets.present? %>
+    <ul>
+      <% @tickets.each do |ticket| %>
+        <li>
+          Ticket: <%= ticket.ticket_type %>
+          <h2><%= ticket.event.title %></h2>
             <p><%= ticket.event.date %></p>
             <p><%= ticket.event.location %></p>
-          </div>
-        </div>
-      </div>
-    <% end %>
+        </li>
+      <% end %>
+    </ul>
   <% else %>
-    <p>No tickets found.</p>
+    <p>No tickets to sell!.</p>
   <% end %>
 </div>
 
