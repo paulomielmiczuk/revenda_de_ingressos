@@ -99,14 +99,14 @@ puts 'Events created!'
 
 puts 'Creating tickets...'
 
-ticket1 = Ticket.create!(user: user1, event: event1, ticket_type: 'meia', available: true)
-ticket2 = Ticket.create!(user: user2, event: event3, ticket_type: 'inteira', available: true)
-ticket3 = Ticket.create!(user: user4, event: event8, ticket_type: 'meia', available: true)
-ticket4 = Ticket.create!(user: user4, event: event9, ticket_type: 'meia', available: true)
-ticket5 = Ticket.create!(user: user4, event: event9, ticket_type: 'meia', available: true)
-ticket6 = Ticket.create!(user: user1, event: event9, ticket_type: 'inteira', available: true)
-ticket7 = Ticket.create!(user: user1, event: event9, ticket_type: 'meia', available: true)
-ticket8 = Ticket.create!(user: user2, event: event9, ticket_type: 'inteira', available: true)
-ticket9 = Ticket.create!(user: user3, event: event9, ticket_type: 'inteira', available: true)
+ticket1 = Ticket.create!(user: user1, event: event1, ticket_type: 'meia', available: true, price: 20)
+ticket2 = Ticket.create!(user: user2, event: event3, ticket_type: 'inteira', available: true, price: 30)
+ticket3 = Ticket.create!(user: user4, event: event8, ticket_type: 'meia', available: true, price: 100)
+ticket4 = Ticket.create!(user: user4, event: event9, ticket_type: 'meia', available: true, price: 15)
+ticket5 = Ticket.create!(user: user4, event: event9, ticket_type: 'meia', available: true, price: 15)
+ticket6 = Ticket.create!(user: user1, event: event9, ticket_type: 'inteira', available: true, price: 30)
+ticket7 = Ticket.create!(user: user1, event: event9, ticket_type: 'meia', available: true, price: 15)
+ticket8 = Ticket.create!(user: user2, event: event9, ticket_type: 'inteira', available: true, price: 30)
+ticket9 = Ticket.create!(user: user3, event: event9, ticket_type: 'inteira', available: true, price: 30)
 
 puts 'Tickets created!'
