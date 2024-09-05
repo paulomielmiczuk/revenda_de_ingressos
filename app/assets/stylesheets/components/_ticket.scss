@@ -1,12 +1,43 @@
+.tickets-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
 .card-ticket {
   overflow: hidden;
   width: 300px;
   height: 180px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  box-shadow: 0 15px 15px -14px rgba(0,0,0,0.2);
+  // margin-bottom: 20px;
+  position: relative;
+}
+
+.cut-left {
+  position: absolute;
+  width: 30px;
+  height: 60px;
+  background: #f4f4f4;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 0 0 0 rgba(0,0,0,0.2),
+  inset -5px 2px 6px rgba(0,0,0,0.2);
+}
+
+.cut-right {
+  position: absolute;
+  right: 0;
+  flex-grow: 1;
+  width: 30px;
+  height: 60px;
+  background: #f4f4f4;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  box-shadow: 0 0 0 rgba(0,0,0,0.2),
+  inset 5px 2px 6px rgba(0,0,0,0.2);
 }
 
 .card-ticket img {
@@ -29,6 +60,6 @@
   margin-top: 8px;
 }
 
-.card-ticket .card-product-infos {
+.card-ticket .card-ticket-infos {
   padding: 16px;
 }

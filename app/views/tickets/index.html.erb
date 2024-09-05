@@ -1,19 +1,23 @@
 <div class="container">
   <h1 class='mb-3'>Tickets</h1>
 
-  <% if @tickets.present? %>
-    <% @tickets.each do |ticket| %>
-      <div class='card-ticket'>
-         <%= cl_image_tag(ticket.event.photo.key, crop: :fill) %>
-        <div class="card-product-infos">
-          <h2><%= ticket.event.title %></h2>
-          <p><strong>Date:</strong> <%= ticket.event.date.strftime("%d-%m-%Y") %></p>
-          <p><strong>Ticket Type:</strong> <%= ticket.ticket_type %></p>
-          <p><strong>Price:</strong> <%= humanized_money_with_symbol(ticket.price) %></p>
+  <div class="tickets-container">
+    <% if @tickets.present? %>
+      <% @tickets.each do |ticket| %>
+        <div class='card-ticket'>
+          <div class="cut-left"></div>
+          <%= cl_image_tag(ticket.event.photo.key, crop: :fill) %>
+          <div class="card-ticket-infos">
+            <h2><%= ticket.event.title %></h2>
+            <p><strong>Date:</strong> <%= ticket.event.date.strftime("%d-%m-%Y") %></p>
+            <p><strong>Ticket Type:</strong> <%= ticket.ticket_type %></p>
+            <p><strong>Price:</strong> <%= humanized_money_with_symbol(ticket.price) %></p>
+          </div>
+          <div class="cut-right"></div>
         </div>
-      </div>
+      <% end %>
+    <% else %>
+      <p>No tickets available.</p>
     <% end %>
-  <% else %>
-    <p>No tickets available.</p>
-  <% end %>
+  </div>
 </div>
