@@ -99,9 +99,9 @@ puts 'Events created!'
 
 puts 'Creating tickets...'
 
-ticket1 = Ticket.create!(user: user1, event: event1)
-ticket2 = Ticket.create!(user: user2, event: event3)
-ticket3 = Ticket.create!(user: user4, event: event8)
+ticket1 = Ticket.create!(user: user1, event: event1, ticket_type: 'meia', available: true, price: 20)
+ticket2 = Ticket.create!(user: user2, event: event3, ticket_type: 'inteira', available: true, price: 30)
+ticket3 = Ticket.create!(user: user4, event: event8, ticket_type: 'meia', available: true, price: 100)
 ticket4 = Ticket.create!(user: user4, event: event9, ticket_type: 'meia', available: true, price: 15)
 ticket5 = Ticket.create!(user: user4, event: event9, ticket_type: 'meia', available: true, price: 15)
 ticket6 = Ticket.create!(user: user1, event: event9, ticket_type: 'inteira', available: true, price: 30)

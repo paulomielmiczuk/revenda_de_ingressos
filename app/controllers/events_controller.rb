@@ -14,6 +14,7 @@ class EventsController < ApplicationController
       lng: @event.longitude
       # marker_html: render_to_string(partial: "marker")
     }]
+    @ticket = Ticket.new
   end
 
   def new
