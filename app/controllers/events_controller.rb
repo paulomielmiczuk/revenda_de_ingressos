@@ -15,6 +15,9 @@ class EventsController < ApplicationController
       # marker_html: render_to_string(partial: "marker")
     }]
     @ticket = Ticket.new
+    @order = Order.new
+    @order.user = current_user
+    @tickets_by_type = Ticket.where(event: @event, available: true).group(:ticket_type).count
   end
 
   def new

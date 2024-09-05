@@ -47,13 +47,6 @@ class OrdersController < ApplicationController
     redirect_to orders_path, alert: 'Payment was canceled.'
   end
 
-  def new
-    @order = Order.new
-    @order.user = current_user
-    @event = Event.find(params[:event_id])
-    @tickets_by_type = Ticket.where(event: @event, available: true).group(:ticket_type).count
-  end
-
   def create
     @event = Event.find(params[:order][:event_id])
     ticket_types = @event.tickets.group(:ticket_type).count
