@@ -2,7 +2,9 @@ class TicketsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tickets = Ticket.where(user: current_user)
+    @tickets = Ticket.joins(:event)
+                     .where(user: current_user)
+                     .order('events.date ASC')
   end
 
   def show
@@ -40,9 +42,17 @@ class TicketsController < ApplicationController
     redirect_to tickets_path
   end
 
+  def update
+    @ticket = Ticket.find(params[:id])
+    @ticket.update(ticket_params)
+
+    render turbo_stream: turbo_stream.replace(@ticket, partial: "tickets/ticket",
+      locals: { ticket: @ticket })
+  end
+
   private
 
   def ticket_params
-    params.require(:ticket).permit(ticket_type: [], quantity: [])
+    params.require(:ticket).permit(:available, ticket_type: [], quantity: [])
   end
 end

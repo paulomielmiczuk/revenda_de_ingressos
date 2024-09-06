@@ -3,25 +3,7 @@
 
   <div class="tickets-container">
     <% if @tickets.present? %>
-      <% @tickets.each do |ticket| %>
-        <div class='card-ticket'>
-          <div class="cut-left"></div>
-          <%= cl_image_tag(ticket.event.photo.key, crop: :fill) %>
-          <div class="card-ticket-infos" data-selling-button-target="ticket">
-            <h2><%= ticket.event.title %></h2>
-            <p>Date: <strong><%= ticket.event.date.strftime("%d-%m-%Y") %></strong></p>
-            <p>Type: <strong><%= ticket.ticket_type %></strong></p>
-            <p>Price: <strong><%= humanized_money_with_symbol(ticket.price) %></strong></p>
-             <% if ticket.available == false %>
-              <button class='sell'>Sell</button>
-            <% end %>
-          </div>
-          <div class="cut-right"></div>
-           <% if ticket.available %>
-            <button class="selling" data-action="click->selling-button#cancel">SELLING</button>
-          <% end %>
-        </div>
-      <% end %>
+      <%= render @tickets %>
     <% else %>
       <p>No tickets available.</p>
     <% end %>
