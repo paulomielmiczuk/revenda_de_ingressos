@@ -2,7 +2,9 @@ class TicketsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tickets = Ticket.where(user: current_user)
+    @tickets = Ticket.joins(:event)
+                     .where(user: current_user)
+                     .order('events.date ASC')
   end
 
   def show
