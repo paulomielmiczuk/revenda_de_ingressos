@@ -5,16 +5,16 @@
   <%= simple_form_for([@event, @ticket]) do |form| %>
     <div class="form-group">
       <% normal_ticket_price = @event.tickets.find_by(ticket_type: 'inteira')&.price_cents || 0 %>
-      <%= form.input 'normal_ticket_quantity', label: "Inteira - quantidade (Price: #{humanized_money_with_symbol(normal_ticket_price / 100.0)})", as: :integer, input_html: { min: 0, step: 1, value: 0 }, required: false %>
+      <%= form.input 'normal_ticket_quantity', label: "Inteira - (Preço: #{humanized_money_with_symbol(normal_ticket_price / 100.0)} cada)", as: :integer, input_html: { min: 0, step: 1, value: 0 }, required: false %>
     </div>
 
     <div class="form-group">
       <% half_ticket_price = @event.tickets.find_by(ticket_type: 'meia')&.price_cents || 0 %>
-      <%= form.input 'half_price_quantity', label: "Meia - quantidade (Price: #{humanized_money_with_symbol(half_ticket_price / 100.0)})", as: :integer, input_html: { min: 0, step: 1, value: 0 }, required: false %>
+      <%= form.input 'half_price_quantity', label: "Meia - (Preço: #{humanized_money_with_symbol(half_ticket_price / 100.0)} cada)", as: :integer, input_html: { min: 0, step: 1, value: 0 }, required: false %>
     </div>
 
     <%= form.hidden_field :event_id, value: @event.id %>
 
-    <%= form.submit 'Sell Tickets', class: 'btn btn-primary mt-3' %>
+    <%= form.submit 'Vender ingressos', class: 'btn btn-primary mt-3' %>
   <% end %>
 </div>

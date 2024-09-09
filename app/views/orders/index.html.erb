@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class='mb-3'>Orders</h1>
+  <h1 class='mb-3'>Pedidos</h1>
 
   <% if @orders.present? %>
     <% @orders.each do |event, orders| %>
@@ -13,9 +13,9 @@
 
         <ol class='ps-0'>
           <% orders.each do |order| %>
-            <li class='d-flex align-items-center'>
-              ● <strong class='mt-0 ms-2'> <%= order.ticket.ticket_type %> - <%= humanized_money_with_symbol(order.ticket.price) %></strong>
-              <%= link_to 'Remove', order_path(order), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'ms-3' %>
+            <li>
+              <%= order.ticket.ticket_type %> - <%= humanized_money_with_symbol(order.ticket.price) %>
+              <%= link_to 'Remover', order_path(order), data: { turbo_method: :delete, turbo_confirm: 'Tem certeza?' } %>
             </li>
           <% end %>
         </ol>
@@ -24,13 +24,13 @@
 
     <% end %>
 
-    <h3>Total Price: <%= humanized_money_with_symbol(@total_price) %></h3>
+    <h3>Preço total: <%= humanized_money_with_symbol(@total_price) %></h3>
 
     <%= form_with url: create_checkout_session_path, data: { turbo_method: :post, turbo: false }, local: true do %>
       <%= submit_tag 'Checkout', class: 'btn btn-primary mt-3' %>
     <% end %>
 
   <% else %>
-    <p>No orders to process!</p>
+    <p>Não há pedidos para processar!</p>
   <% end %>
 </div>

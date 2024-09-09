@@ -10,14 +10,14 @@
       <div class="d-flex my-3 justify-content-between">
         <% if current_user %>
           <button type="button" class="btn btn-primary rounded me-1" data-bs-toggle="modal" data-bs-target="#sellTicketModal" style='width:100%'>
-            Sell
+            Vender
           </button>
           <button type="button" class="btn btn-primary rounded ms-1" data-bs-toggle="modal" data-bs-target="#buyTicketModal" style='width:100%' <%= @tickets_by_type.values.sum == 0 ? 'disabled' : '' %>>
-            Buy
+            Comprar
           </button>
         <% else %>
-          <%= link_to 'Sell', new_user_session_path, class: 'btn btn-primary rounded ms-1', style: 'width: 100%' %>
-          <%= link_to 'Buy', new_user_session_path, class: 'btn btn-primary rounded ms-1', style: 'width: 100%' %>
+          <%= link_to 'Vender', new_user_session_path, class: 'btn btn-primary rounded ms-1', style: 'width: 100%' %>
+          <%= link_to 'Comprar', new_user_session_path, class: 'btn btn-primary rounded ms-1', style: 'width: 100%' %>
         <% end %>
       </div>
 
@@ -76,7 +76,7 @@
                 <%= f.input :content, as: :text, label: false, input_html: { class: 'form-control' } %>
               </div>
               <div class="text-end d-flex justify-content-between mb-4">
-                <%= link_to 'Back to events', events_path, class: 'btn btn-sm btn-outline-primary' %>
+                <%= link_to 'Voltar aos eventos', events_path, class: 'btn btn-sm btn-outline-primary' %>
                 <%= f.button :submit, 'Post', class: 'btn btn-sm btn-primary' %>
               </div>
             <% end %>
@@ -95,7 +95,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title" id="sellTicketModalLabel">Sell</h3>
+          <h3 class="modal-title" id="sellTicketModalLabel">Vender</h3>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -110,7 +110,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title" id="buyTicketModalLabel">Buy</h3>
+          <h3 class="modal-title" id="buyTicketModalLabel">Comprar</h3>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
