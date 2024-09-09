@@ -1,9 +1,9 @@
 <div class="d-flex justify-content-between mb-4">
   <div>
-    <h1>My Events</h1>
+    <h1>Meus Eventos</h1>
   </div>
   <div>
-    <%= link_to 'Add new event', new_event_path, class: 'my_events-btn btn-success rounded' %>
+    <%= link_to 'Adicionar novo evento', new_event_path, class: 'my_events-btn btn-success rounded' %>
   </div>
 </div>
 
@@ -19,17 +19,17 @@
             <h2><%= event.title %></h2>
             <p><%= event.location %></p>
             <p><strong><%= event.date.strftime("%d-%m-%Y") %></strong></p>
-            <%= link_to "Edit event", edit_event_path(event), class: 'btn btn-sm btn-outline-warning rounded' %>
-            <%= link_to "Remove event", event_path(event), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger rounded' %>
+            <%= link_to "Editar evento", edit_event_path(event), class: 'btn btn-sm btn-outline-warning rounded' %>
+            <%= link_to "Remover evento", event_path(event), data: { turbo_method: :delete, turbo_confirm: 'Tem certeza?' }, class: 'btn btn-sm btn-outline-danger rounded' %>
           </div>
         </div>
       <% end %>
     </div>
   </div>
 <% else %>
-  <p>No events found</p>
+  <p>Nenhum evento encontrado</p>
 <% end %>
 
 <div class="text-center mt-4">
-  <%= link_to 'All events', events_path, class: 'my_events-btn btn-outline-primary rounded' %>
+  <%= link_to 'Todos os eventos', events_path, class: 'my_events-btn btn-outline-primary rounded' %>
 </div>

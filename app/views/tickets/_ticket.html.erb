@@ -3,19 +3,19 @@
     <div class="cut-left"></div>
     <%= cl_image_tag(ticket.event.photo.key, crop: :fill) %>
     <div class="card-ticket-infos">
-      <h2><%= ticket.event.title %> <i class="fa-regular fa-file" style="color: #000000;"></i></h2>
-      <p>Date: <strong><%= ticket.event.date.strftime("%d-%m-%Y") %></strong></p>
-      <p>Type: <strong><%= ticket.ticket_type %></strong></p>
-      <p>Price: <strong><%= humanized_money_with_symbol(ticket.price) %></strong></p>
+      <h2><%= ticket.event.title %></h2>
+      <p>Data: <strong><%= ticket.event.date.strftime("%d-%m-%Y") %></strong> <i class="fa-regular fa-file" style="color: #000000;"></i></p>
+      <p>Tipo: <strong><%= ticket.ticket_type %></strong></p>
+      <p>Preço`: <strong><%= humanized_money_with_symbol(ticket.price) %></strong></p>
       <% if ticket.available %>
         <%= simple_form_for ticket do |f| %>
           <%= f.input :available, :as => :hidden, :input_html => { :value => !ticket.available } %>
-          <%= f.submit 'SELLING', class: 'selling', data: { turbo_confirm: 'Você tem certeza que quer deixar de vender este ingresso?' } %>
+          <%= f.submit 'VENDENDO', class: 'selling', data: { turbo_confirm: 'Você tem certeza que quer deixar de vender este ingresso?' } %>
         <% end %>
       <% else %>
         <%= simple_form_for ticket do |f| %>
           <%= f.input :available, :as => :hidden, :input_html => { :value => !ticket.available } %>
-          <%= f.submit 'Sell', class: 'sell', data: { turbo_confirm: 'Você tem certeza que quer vender este ingresso?' } %>
+          <%= f.submit 'Vender', class: 'sell', data: { turbo_confirm: 'Você tem certeza que quer vender este ingresso?' } %>
         <% end %>
       <% end %>
     </div>
