@@ -43,7 +43,7 @@ class TicketsController < ApplicationController
     if created_tickets.any?
       redirect_to edit_images_tickets_path(ticket_ids: created_tickets.map(&:id))
     else
-      redirect_to tickets_path, notice: 'No tickets added!'
+      redirect_to tickets_path, notice: 'Nenhum ticket adicionado!'
     end
   end
 
@@ -58,7 +58,7 @@ class TicketsController < ApplicationController
         ticket.image.attach(params[:ticket][:image]) if params[:ticket][:image].present?
       end
     end
-    redirect_to tickets_path, notice: 'Images uploaded'
+    redirect_to tickets_path, notice: 'Arquivos enviados!'
   end
 
   def destroy
