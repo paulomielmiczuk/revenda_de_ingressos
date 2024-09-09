@@ -4,7 +4,7 @@
     <%= cl_image_tag(ticket.event.photo.key, crop: :fill) %>
     <div class="card-ticket-infos">
       <h2><%= ticket.event.title %></h2>
-      <p>Data: <strong><%= ticket.event.date.strftime("%d-%m-%Y") %></strong></p>
+      <p>Data: <strong><%= ticket.event.date.strftime("%d-%m-%Y") %></strong> <i class="fa-regular fa-file" style="color: #000000;"></i></p>
       <p>Tipo: <strong><%= ticket.ticket_type %></strong></p>
       <p>Preço`: <strong><%= humanized_money_with_symbol(ticket.price) %></strong></p>
       <% if ticket.available %>
