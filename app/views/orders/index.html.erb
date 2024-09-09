@@ -5,15 +5,17 @@
     <% @orders.each do |event, orders| %>
     <div class="grid-item">
       <div class='card-content'>
+      <div class='d-flex justify-content-between align-items-center'>
         <h2><%= event.title %></h2>
+        <p><%= event.date.strftime("%d-%m-%Y") %></p>
+      </div>
         <p><%= event.location %></p>
-        <p><strong><%= event.date.strftime("%d-%m-%Y") %></strong></p>
 
-        <ol>
+        <ol class='ps-0'>
           <% orders.each do |order| %>
-            <li>
-              <%= order.ticket.ticket_type %> - <%= humanized_money_with_symbol(order.ticket.price) %>
-              <%= link_to 'Remove', order_path(order), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+            <li class='d-flex align-items-center'>
+              ● <strong class='mt-0 ms-2'> <%= order.ticket.ticket_type %> - <%= humanized_money_with_symbol(order.ticket.price) %></strong>
+              <%= link_to 'Remove', order_path(order), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'ms-3' %>
             </li>
           <% end %>
         </ol>
