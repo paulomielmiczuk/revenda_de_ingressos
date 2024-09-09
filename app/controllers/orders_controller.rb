@@ -60,6 +60,7 @@ class OrdersController < ApplicationController
     @orders = Order.where(user: current_user, processed: false)
     @orders.each do |order|
       order.update(processed: true)
+      order.destroy!
       ticket = order.ticket
       last_user = ticket.user
       ticket.update!(user: current_user, available: false)
