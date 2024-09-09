@@ -5,7 +5,7 @@
   <%= simple_form_for [@event, @order] do |form| %>
     <% @tickets_by_type.each do |ticket_type, count| %>
       <div class="form-group">
-        <%= form.input "#{ticket_type}_quantity", label: "#{ticket_type} - #{count} available (Price: R$#{Ticket.where(event: @event, ticket_type: ticket_type).first&.price} each)",
+        <%= form.input "#{ticket_type}_quantity", label: "#{ticket_type.capitalize} - #{count} #{count > 1 ? 'disponíveis' : 'disponível'} (Preço: R$#{Ticket.where(event: @event, ticket_type: ticket_type).first&.price} cada)",
                       as: :integer,
                       input_html: { min: 0, max: count, step: 1, value: 0 },
                       required: false %>
@@ -15,6 +15,6 @@
     <%= form.hidden_field :event_id, value: @event.id %>
     <%# form.hidden_field :user_id, value: @order.user.id %>
 
-    <%= form.submit 'Create Order', class: 'btn btn-primary' %>
+    <%= form.submit 'Fazer Pedido', class: 'btn btn-primary' %>
   <% end %>
 </div>
