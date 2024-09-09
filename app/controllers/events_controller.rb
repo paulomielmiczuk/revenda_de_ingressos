@@ -18,6 +18,7 @@ class EventsController < ApplicationController
     @order = Order.new
     @order.user = current_user
     @tickets_by_type = Ticket.where(event: @event, available: true).group(:ticket_type).count
+    @post = Post.new
   end
 
   def new
