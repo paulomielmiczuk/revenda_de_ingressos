@@ -1,6 +1,7 @@
 <div class="container" data-controller="selling-button">
   <h1 class='mb-3'>Tickets</h1>
 
+  <%= turbo_stream_from "user_#{current_user.id}" %>
   <div class="tickets-container pb-4">
     <% if @tickets.present? %>
       <%= render @tickets %>

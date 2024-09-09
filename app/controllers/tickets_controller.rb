@@ -5,6 +5,9 @@ class TicketsController < ApplicationController
     @tickets = Ticket.joins(:event)
                      .where(user: current_user)
                      .order('events.date ASC')
+
+    # render turbo_stream: turbo_stream.update('tickets-container',
+    #   partial: 'tickets/tickets_container', locals: { tickets: @tickets })
   end
 
   def show
@@ -66,7 +69,7 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
     @ticket.update(ticket_params)
 
-    render turbo_stream: turbo_stream.replace(@ticket, partial: "tickets/ticket",
+    render turbo_stream: turbo_stream.update(@ticket, partial: "tickets/ticket",
       locals: { ticket: @ticket })
   end
 

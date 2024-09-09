@@ -55,6 +55,7 @@ gem "pg_search"
 gem "geocoder"
 gem 'money-rails'
 gem 'stripe'
+gem "actioncable-enhanced-postgresql-adapter"
 
 group :development, :test do
   gem "dotenv-rails"
