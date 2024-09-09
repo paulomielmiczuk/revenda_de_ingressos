@@ -1,0 +1,19 @@
+<h2>Upload your tickets</h2>
+
+<%= simple_form_for :tickets, url: update_images_tickets_path, method: :patch, html: { multipart: true } do |f| %>
+  <% @tickets.each do |ticket| %>
+    <div class="ticket">
+      <h4>Ticket Type: <%= ticket.ticket_type %></h4>
+
+      <%= f.simple_fields_for "ticket_#{ticket.id}", ticket do |ticket_form| %>
+        <div class="form-group">
+          <%= ticket_form.input :image, as: :file, label: "Upload image for Ticket ##{ticket.id}", input_html: { accept: 'image/*' } %>
+        </div>
+      <% end %>
+    </div>
+    <hr>
+  <% end %>
+
+  <%= hidden_field_tag :ticket_ids, @tickets.map(&:id).join(',') %>
+  <%= f.submit 'Upload Images', class: 'btn btn-primary' %>
+<% end %>

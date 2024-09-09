@@ -19,21 +19,41 @@ class TicketsController < ApplicationController
 
   def create
     @event = Event.find(params[:event_id])
+    created_tickets = []
 
     normal_ticket_quantity = params[:ticket][:normal_ticket_quantity].to_i
     if normal_ticket_quantity.positive?
       normal_ticket_quantity.times do
-        Ticket.create!(ticket_type: 'inteira', event: @event, user: current_user, available: true)
+        ticket = Ticket.create!(ticket_type: 'inteira', event: @event, user: current_user, available: true)
+        created_tickets << ticket
       end
     end
 
     half_price_quantity = params[:ticket][:half_price_quantity].to_i
     if half_price_quantity.positive?
       half_price_quantity.times do
-        Ticket.create!(ticket_type: 'meia', event: @event, user: current_user, available: true)
+        ticket = Ticket.create!(ticket_type: 'meia', event: @event, user: current_user, available: true)
+        created_tickets << ticket
       end
     end
-    redirect_to tickets_path, notice: 'Tickets added!'
+
+    if created_tickets.any?
+      redirect_to edit_images_tickets_path(ticket_ids: created_tickets.map(&:id))
+    else
+      redirect_to tickets_path, notice: 'Tickets added!'
+    end
+  end
+
+  def edit_images
+    @tickets = Ticket.where(id: params[:ticket_ids])
+  end
+
+  def update_images
+    @tickets = Ticket.where(id: params[:ticket_ids])
+    @tickets.each do |ticket|
+      ticket.update(ticket_params)
+    end
+    redirect_to tickets_path, notice: 'Images uploaded'
   end
 
   def destroy
@@ -53,6 +73,6 @@ class TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:available, ticket_type: [], quantity: [])
+    params.require(:ticket).permit(:available, :image, ticket_type: [], quantity: [])
   end
 end
