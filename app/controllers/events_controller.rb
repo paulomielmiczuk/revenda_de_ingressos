@@ -11,8 +11,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @marker = [{
       lat: @event.latitude,
-      lng: @event.longitude
-      # marker_html: render_to_string(partial: "marker")
+      lng: @event.longitude,
+      marker_html: render_to_string(partial: "marker")
     }]
     @ticket = Ticket.new
     @order = Order.new
