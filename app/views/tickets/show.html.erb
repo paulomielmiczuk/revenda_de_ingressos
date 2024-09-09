@@ -22,12 +22,12 @@
         </div>
       </div>
 
-        <p class='h6 fw-semibold'>Location: <%= @event.location %></p>
-        <p class='fw-semibold'>Host: <%= @event.user.name %></p>
-        <p class='fw-semibold'>Seller: <%= @ticket.user.name %></p>
-        <p>Description: <%= @event.description %></p>
+        <p class='h6 fw-semibold'>Local: <%= @event.location %></p>
+        <p class='fw-semibold'>Anfitrião: <%= @event.user.name %></p>
+        <p class='fw-semibold'>Vendedor: <%= @ticket.user.name %></p>
+        <p>Descrição: <%= @event.description %></p>
 
-        <%= link_to 'Back to events', events_path, class: 'btn btn-sm btn-outline-primary rounded mb-4' %>
+        <%= link_to 'Voltar aos eventos', events_path, class: 'btn btn-sm btn-outline-primary rounded mb-4' %>
     </div>
 
     <div class='col-sm-12 col-lg-5'>
