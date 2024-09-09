@@ -15,13 +15,14 @@ Rails.application.routes.draw do
     resources :tickets, only: %i[new create destroy]
     resources :orders, only: %i[create]
   end
-  
+
   resources :tickets, only: %i[index update] do
     collection do
       get 'edit_images', to: 'tickets#edit_images'
       patch 'update_images', to: 'tickets#update_images'
     end
   end
+
   resources :orders, only: %i[index destroy]
   patch "orders", to: "orders#checkout", as: 'checkout'
   post 'create_checkout_session', to: 'orders#create_checkout_session'

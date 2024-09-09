@@ -43,7 +43,7 @@ class TicketsController < ApplicationController
     if created_tickets.any?
       redirect_to edit_images_tickets_path(ticket_ids: created_tickets.map(&:id))
     else
-      redirect_to tickets_path, notice: 'Tickets added!'
+      redirect_to tickets_path, notice: 'No tickets added!'
     end
   end
 
@@ -54,7 +54,9 @@ class TicketsController < ApplicationController
   def update_images
     @tickets = Ticket.where(id: params[:ticket_ids])
     @tickets.each do |ticket|
-      ticket.update(ticket_params)
+      if params[:ticket].present?
+        ticket.image.attach(params[:ticket][:image]) if params[:ticket][:image].present?
+      end
     end
     redirect_to tickets_path, notice: 'Images uploaded'
   end
