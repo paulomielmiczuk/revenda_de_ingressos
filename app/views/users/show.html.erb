@@ -1,14 +1,16 @@
-<div>
-  <h1>User Profile</h1>
-  <p><strong>Name:</strong> <%= @user.name %></p>
-  <p><strong>Email:</strong> <%= @user.email %></p>
-  <% if @user.company %>
-    <p><strong>Type:</strong> Company</p>
-  <% else %>
-    <p><strong>Type:</strong> Individual</p>
-  <% end %>
-</div>
+<div class="container">
+  <div>
+    <h1>User Profile</h1>
+    <p><strong>Name:</strong> <%= @user.name %></p>
+    <p><strong>Email:</strong> <%= @user.email %></p>
+    <% if @user.company %>
+      <p><strong>Type:</strong> Company</p>
+    <% else %>
+      <p><strong>Type:</strong> Individual</p>
+    <% end %>
+  </div>
 
-<div>
-  <%= link_to "Edit profile", edit_user_registration_path, class: 'my_events-btn btn-outline-primary rounded' %>
+  <div>
+    <%= link_to "Edit profile", edit_user_registration_path, class: 'btn btn-outline-primary' %>
+  </div>
 </div>
