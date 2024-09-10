@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
-      redirect_to @post.event, notice: 'Comment created successfully.'
+      render turbo_stream: turbo_stream.append(:comments, partial: "events/comment", locals: { comment: @comment, post: @post }), notice: 'Comment created successfully.'
     else
       redirect_to @post.event, alert: 'Failed to create comment.'
     end

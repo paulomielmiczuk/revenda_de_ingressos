@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     @post = @event.posts.build(post_params)
     @post.user = current_user
     if @post.save
-      redirect_to @event, notice: 'Post created successfully.'
+      render turbo_stream: turbo_stream.prepend(:posts, partial: "events/post", locals: { post: @post }), alert: 'Post created successfully.'
     else
       redirect_to @event, alert: 'Failed to create post.'
     end
