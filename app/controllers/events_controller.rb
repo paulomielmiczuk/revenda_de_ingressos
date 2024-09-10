@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   def index
     @events = Event.order(:date)
     if params[:query].present?
-      @events = @events.search_by_title_and_location(params[:query])
+      @events = @events.search_by_title_and_location_and_date(params[:query])
     end
   end
 
