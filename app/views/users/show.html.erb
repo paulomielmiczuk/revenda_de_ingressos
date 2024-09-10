@@ -1,21 +1,30 @@
 <div class="container py-5">
   <div class="row">
     <div class="col-12 col-md-8 col-lg-6 mx-auto">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h1 class="card-title text-center mb-4">Perfil do Usuário</h1>
+      <div class="bg-white rounded p-4 shadow-sm">
+        <div class="d-flex">
+          <div>
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar-large" %>
+            <% else %>
+              <%= image_tag "avatar.svg", class: "avatar-large", alt: "dropdown menu" %>
+            <% end %>
+            <div class="text-center mt-4">
+              <%= link_to "Editar perfil", edit_user_registration_path, class: 'btn btn-outline-primary' %>
+            </div>
+          </div>
+          <div class="card-body ms-4 mt-4">
+            <% if @user.name? %>
+              <h1 class="card-title mb-4"><%= @user.name %></h1>
+            <% else %>
+              <h1 class="card-title mb-4">Perfil do Usuário</h1>
+            <% end %>
+            <p class="mb-2"><strong>Email: </strong><%= @user.email %></p>
 
-          <p class="mb-2"><strong>Nome:</strong> <%= @user.name %></p>
-          <p class="mb-2"><strong>Email:</strong> <%= @user.email %></p>
-
-          <% if @user.company %>
-            <p class="mb-2"><strong>Tipo:</strong> Empresa</p>
-          <% else %>
-            <p class="mb-2"><strong>Tipo:</strong> Individual</p>
-          <% end %>
-
-          <div class="text-center mt-4">
-            <%= link_to "Editar perfil", edit_user_registration_path, class: 'btn btn-outline-primary' %>
+            <% if @user.company %>
+              <p class="mb-2"><strong>Tipo:</strong> Empresa</p>
+            <% else %>
+            <% end %>
           </div>
         </div>
       </div>
