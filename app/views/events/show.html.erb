@@ -41,61 +41,14 @@
             <h3>Fórum</h3>
 
             <!-- Display Posts -->
-            <% @event.posts.order(created_at: :desc).each do |post| %>
-              <div class="mt-3">
-                <div class="forum-card">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class='d-flex'>
-                      <% if post.user.photo.attached? %>
-                        <%= cl_image_tag comment.user.photo.key, widht: 30, class: 'forum-avatar', crop: :fill %>
-                      <% else %>
-                        <%= image_tag "avatar.svg", width: 30, class: 'me-2'  %>
-                      <% end %>
-                      <div>
-                        <p class='forum-user'><%= post.user.email %></p>
-                        <p class='forum-text'><%= post.content %></p>
-                      </div>
-                    </div>
-                      <% if post.user == current_user %>
-                        <%= link_to "Deletar post", event_post_path(@event, post), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %>
-                      <% end %>
-                  </div>
-                  <!-- Comments -->
-                  <% post.comments.order(created_at: :asc).each do |comment| %>
-                    <div class="mt-2 forum-comment">
-                      <div class="d-flex">
-                        <% if comment.user.photo.attached? %>
-                          <%= cl_image_tag comment.user.photo.key, widht: 30, class: 'forum-avatar', crop: :fill %>
-                        <% else %>
-                          <%= image_tag "avatar.svg", width: 30, class: 'me-2'  %>
-                        <% end %>
-                          <div>
-                            <p class='forum-user'><%= comment.user.email %>:</p>
-                            <div class="d-flex align-items-center">
-                              <p class='forum-text'><%= comment.content %></p>
-                              <% if comment.user == current_user %>
-                                <%= link_to "Deletar", event_post_comment_path(@event, post, comment), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'delete-comment text-danger' %>
-                              <% end %>
-                            </div>
-                          </div>
-                      </div>
-                    </div>
-                  <% end %>
-                  <!-- Add Comment -->
-                  <% if user_signed_in? %>
-                    <div class="mt-3">
-                      <%= simple_form_for [@event, post, post.comments.new], html: { class: 'form-inline' } do |f| %>
-                        <%= f.input :content, as: :string, label: false, input_html: { class: 'form-control bg-white forum-input', placeholder: 'Adicione um comentário...' } %>
-                        <%= f.button :submit, 'Comment', class: 'btn btn-sm btn-outline-primary d-none' %>
-                      <% end %>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
+            <div id="posts">
+              <% @event.posts.order(created_at: :desc).each do |post| %>
+                <%= render "events/post", post: post %>
+              <% end %>
+            </div>
 
             <!-- New Post -->
-            <%= simple_form_for [@event, @post] do |f| %>
+            <%= simple_form_for [@event, @post], html: { data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }} do |f| %>
               <div class="form-group mt-3">
                 <%= f.input :content, as: :text, label: false, input_html: { class: 'form-control bg-white', placeholder: 'Novo post...' } %>
               </div>
@@ -108,9 +61,11 @@
     </div>
 
     <div class='col-sm-12 col-lg-5'>
-      <% if @event.photo.present? %>
-        <%= cl_image_tag(@event.photo.key, widht: '100%', crop: :fill, class: 'img-fluid') %>
-      <% end %>
+      <div class="sticky-photo">
+        <% if @event.photo.present? %>
+          <%= cl_image_tag(@event.photo.key, widht: '100%', crop: :fill, class: 'img-fluid') %>
+        <% end %>
+      </div>
     </div>
   </div>
 
