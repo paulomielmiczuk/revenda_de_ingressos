@@ -14,7 +14,10 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy!
-    redirect_to @event
+    respond_to do |format|
+      format.html { redirect_to @event }
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(@post) }
+    end
   end
 
   private

@@ -1,4 +1,4 @@
-<div id="comment-<%= comment.id %>">
+<div id="<%= dom_id(comment) %>">
   <div class="mt-2 forum-comment">
     <div class="d-flex">
       <% if comment.user.photo.attached? %>
