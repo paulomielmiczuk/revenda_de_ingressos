@@ -10,6 +10,12 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
+      # Turbo::StreamsChannel.broadcast_update_to(
+      #   "post_#{@post.id}",
+      #   target: "post_#{@post.id}_comments",
+      #   partial: "events/comment",
+      #   locals: { comment: @comment, post: @post }
+      # )
       render turbo_stream: turbo_stream.append("post_#{@post.id}_comments", partial: "events/comment", locals: { comment: @comment, post: @post }), notice: 'Comment created successfully.'
     else
       redirect_to @post.event, alert: 'Failed to create comment.'
@@ -19,6 +25,10 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy!
+    # Turbo::StreamsChannel.broadcast_remove_to(
+    #   "post_#{@post.id}",
+    #   target: "comment_#{@comment.id}"
+    # )
     respond_to do |format|
       format.html { redirect_to @post.event }
       format.turbo_stream { render turbo_stream: turbo_stream.remove(@comment) }
