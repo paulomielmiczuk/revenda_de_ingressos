@@ -1,18 +1,27 @@
-<h2>Forgot your password?</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+<h2 class="mb-4 text-center">Esqueceu sua senha?</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'needs-validation' }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-group">
     <%= f.input :email,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" } %>
+                label: "E-mail",
+                input_html: { autocomplete: "email", class: "form-control", placeholder: "Insira seu e-mail" } %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
+  <div class="form-group mt-4 d-flex justify-content-center">
+    <%= f.button :submit, "Envie-me instruções para redefinir a senha", class: "btn btn-primary btn-block" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="mt-3 text-center">
+  <%= render "devise/shared/links" %>
+  </div>
+  </div>
+  </div>
+</div>
