@@ -108,9 +108,11 @@
     </div>
 
     <div class='col-sm-12 col-lg-5'>
-      <% if @event.photo.present? %>
-        <%= cl_image_tag(@event.photo.key, widht: '100%', crop: :fill, class: 'img-fluid') %>
-      <% end %>
+      <div class="sticky-photo">
+        <% if @event.photo.present? %>
+          <%= cl_image_tag(@event.photo.key, widht: '100%', crop: :fill, class: 'img-fluid') %>
+        <% end %>
+      </div>
     </div>
   </div>
 
