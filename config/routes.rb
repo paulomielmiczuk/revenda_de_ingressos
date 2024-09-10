@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   resources :events do
     resources :tickets, only: %i[new create destroy]
     resources :orders, only: %i[create]
+    resources :posts, only: %i[new create destroy] do
+      resources :comments, only: %i[new create destroy]
+    end
   end
 
   resources :tickets, only: %i[index update] do
