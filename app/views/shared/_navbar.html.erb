@@ -1,6 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-
     <%= link_to events_path, class: "navbar-brand" do %>
       <%= image_tag "logo.svg" %>
     <% end %>
@@ -10,15 +9,14 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <div class="mx-auto">
-        <%= form_with url: events_path, method: :get, class: "d-flex w-100" do %>
+      <div class="search-container">
+        <%= form_with url: events_path, method: :get, class: "d-flex" do %>
           <div class="input-group">
+            <%= text_field_tag :query, params[:query], class: "form-control field-btn", placeholder: "Nome do evento..." %>
+            <%= text_field_tag :location, params[:location], class: "form-control field-btn", placeholder: "Localização..." %>
+            <%= text_field_tag :date, params[:date], class: "form-control field-btn", placeholder: "Date", type: "date" %>
 
-            <%= text_field_tag :query, params[:query], class: "form-control me-2", placeholder: "Nome do evento..." %>
-            <%= text_field_tag :location, params[:location], class: "form-control me-2", placeholder: "Localização..." %>
-            <%= text_field_tag :date, params[:date], class: "form-control me-2", placeholder: "Data...", type: "date" %>
-
-            <%= submit_tag "Buscar", name: "", class: "my_events-btn btn-success" %>
+            <%= submit_tag "Buscar", name: "", class: "search-btn btn-success" %>
           </div>
         <% end %>
       </div>
@@ -35,7 +33,7 @@
               <% if current_user.photo.attached? %>
                 <%= cl_image_tag current_user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face, class: "avatar", alt: "dropdown menu" %>
               <% else %>
-                <%= image_tag "avatar.svg", class: "avatar", alt: "dropdown menu"  %>
+                <%= image_tag "avatar.svg", class: "avatar", alt: "dropdown menu" %>
               <% end %>
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
