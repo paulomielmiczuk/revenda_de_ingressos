@@ -4,7 +4,7 @@
       <div class="d-flex justify-content-between align-items-center">
         <div class='d-flex'>
           <% if post.user.photo.attached? %>
-            <%= cl_image_tag comment.user.photo.key, widht: 30, class: 'forum-avatar', crop: :fill %>
+            <%= cl_image_tag post.user.photo.key, width: 30, class: 'forum-avatar', crop: :fill %>
           <% else %>
             <%= image_tag "avatar.svg", width: 30, class: 'me-2'  %>
           <% end %>
@@ -13,12 +13,12 @@
             <p class='forum-text'><%= post.content %></p>
           </div>
         </div>
-          <% if post.user == current_user %>
-            <%= link_to "Deletar post", event_post_path(@event, post), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %>
-          <% end %>
+        <% if post.user == current_user %>
+          <%= link_to "Deletar post", event_post_path(@event, post), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %>
+        <% end %>
       </div>
       <!-- Comments -->
-      <div id="comments">
+      <div id="comments-<%= post.id %>">
         <% post.comments.order(created_at: :asc).each do |comment| %>
           <%= render "events/comment", comment: comment, post: post %>
         <% end %>
