@@ -11,13 +11,14 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @marker = [{
       lat: @event.latitude,
-      lng: @event.longitude
-      # marker_html: render_to_string(partial: "marker")
+      lng: @event.longitude,
+      marker_html: render_to_string(partial: "marker")
     }]
     @ticket = Ticket.new
     @order = Order.new
     @order.user = current_user
     @tickets_by_type = Ticket.where(event: @event, available: true).group(:ticket_type).count
+    @post = Post.new
   end
 
   def new
