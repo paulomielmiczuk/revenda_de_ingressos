@@ -10,11 +10,11 @@
 }
 
 body {
-  margin-top: 100px;
+  margin-top: 100px; /* Pode ser ajustado conforme necessário */
 }
 
 .container {
-  margin-top: 100px;
+  margin-top: 100px; /* Pode ser ajustado conforme necessário */
 }
 
 .navbar-lewagon {
@@ -30,28 +30,9 @@ body {
   width: 40px;
 }
 
-.search {
-  width: 600px;
-  padding: 10px;
-  border-radius: 10px 0px 0px 10px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
-
-.search:hover {
-  box-shadow: #373A40;
-}
-
-.search-btn{
-  width: 100px;
-  border-radius: 0px 10px 10px 0px;
-  background: rgb(0, 0, 0);
-  border: #000000;
-  color: #ffffff;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin: 0;
-  text-align: center;
+.input-group {
+  width: auto; /* Ajusta a largura conforme necessário */
+  margin: 0 auto; /* Centraliza horizontalmente */
 }
 
 .my_events-btn {
@@ -71,7 +52,7 @@ body {
 }
 
 .my_events-btn:hover {
-  background-color: #40e29a;
-  border: 1px solid #40E29A;
+  background-color: #FF7D26;
+  border: 1px solid #FF7D26;
   color: #000000;
 }

@@ -3,7 +3,15 @@ class EventsController < ApplicationController
   def index
     @events = Event.order(:date)
     if params[:query].present?
-      @events = @events.search_by_title_and_location_and_date(params[:query])
+      @events = @events.where("title ILIKE ?", "%#{params[:query]}%")
+    end
+
+    if params[:location].present?
+      @events = @events.where("location ILIKE ?", "%#{params[:location]}%")
+    end
+
+    if params[:date].present?
+      @events = @events.where(date: params[:date])
     end
   end
 
