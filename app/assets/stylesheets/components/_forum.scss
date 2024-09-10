@@ -1,7 +1,7 @@
 .forum-card {
   background-color: white;
-  border-radius: 10px;
-  padding: 16px;
+  border-radius: 0px;
+  padding: 16px 16px 4px 16px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -22,4 +22,16 @@
   margin-left: 8px;
   text-decoration: none;
   font-size: 10px;
+}
+
+.forum-input {
+  width: 95%;
+  height: 31px;
+  margin-left: 35px;
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.forum-form {
+  margin-bottom: 0;
 }
