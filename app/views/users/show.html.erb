@@ -1,14 +1,24 @@
-<div>
-  <h1>Perfil do Usuário</h1>
-  <p><strong>Nome:</strong> <%= @user.name %></p>
-  <p><strong>Email:</strong> <%= @user.email %></p>
-  <% if @user.company %>
-    <p><strong>Tipo:</strong> Empresa</p>
-  <% else %>
-    <p><strong>Tipo:</strong> Individual</p>
-  <% end %>
-</div>
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-8 col-lg-6 mx-auto">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h1 class="card-title text-center mb-4">Perfil do Usuário</h1>
 
-<div>
-  <%= link_to "Editar perfil", edit_user_registration_path, class: 'my_events-btn btn-outline-primary rounded' %>
+          <p class="mb-2"><strong>Nome:</strong> <%= @user.name %></p>
+          <p class="mb-2"><strong>Email:</strong> <%= @user.email %></p>
+
+          <% if @user.company %>
+            <p class="mb-2"><strong>Tipo:</strong> Empresa</p>
+          <% else %>
+            <p class="mb-2"><strong>Tipo:</strong> Individual</p>
+          <% end %>
+
+          <div class="text-center mt-4">
+            <%= link_to "Editar perfil", edit_user_registration_path, class: 'btn btn-outline-primary' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

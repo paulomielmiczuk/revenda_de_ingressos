@@ -24,7 +24,7 @@
       <div class='d-flex justify-content-between mt-3'>
         <div>
           <div class='d-flex align-items-baseline'>
-            <p class='h4 fw-semibold'><%= @event.title %></p>
+            <h3><%= @event.title %></h3>
           </div>
         </div>
         <div>
@@ -32,11 +32,73 @@
         </div>
       </div>
 
-        <p class='fw-semibold'>Anfitrião: <%= @event.user.name %></p>
-        <p class='h6 fw-semibold'>Local: <%= @event.location %></p>
+        <p class='h5'><%= @event.user.name %></p>
+        <p><%= @event.location %></p>
         <p><%= @event.description %></p>
 
-        <%= link_to 'Voltar aos eventos', events_path, class: 'btn btn-sm btn-outline-primary rounded mb-4' %>
+        <!-- Forum -->
+          <div class="mt-5">
+            <h3>Fórum</h3>
+
+            <!-- Display Posts -->
+            <% @event.posts.order(created_at: :desc).each do |post| %>
+              <div class="mt-3">
+                <div class="forum-card">
+                  <div class="d-flex">
+                    <% if post.user.photo.attached? %>
+                      <%= cl_image_tag comment.user.photo.key, widht: 30, class: 'forum-avatar', crop: :fill %>
+                    <% else %>
+                      <%= image_tag "avatar.svg", width: 30, class: 'me-2'  %>
+                    <% end %>
+                    <div>
+                      <p class='forum-user'><%= post.user.email %></p>
+                      <p class='forum-text'><%= post.content %></p>
+                    </div>
+                  </div>
+                  <!-- Comments -->
+                  <% post.comments.order(created_at: :asc).each do |comment| %>
+                    <div class="mt-2 forum-comment">
+                      <div class="d-flex">
+                        <% if comment.user.photo.attached? %>
+                          <%= cl_image_tag comment.user.photo.key, widht: 30, class: 'forum-avatar', crop: :fill %>
+                        <% else %>
+                          <%= image_tag "avatar.svg", width: 30, class: 'me-2'  %>
+                        <% end %>
+                          <div>
+                            <p class='forum-user'><%= comment.user.email %>:</p>
+                            <div class="d-flex align-items-center">
+                              <p class='forum-text'><%= comment.content %></p>
+                              <% if comment.user == current_user %>
+                                <%= link_to "Deletar", event_post_comment_path(@event, post, comment), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'delete-comment text-danger' %>
+                              <% end %>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  <% end %>
+                  <!-- Add Comment -->
+                  <div class="d-flex justify-content-between">
+                    <%= link_to 'Comment', new_event_post_comment_path(@event, post), class: 'btn btn-sm btn-outline-primary mt-3' %>
+                    <% if post.user == current_user %>
+                      <%= link_to "Deletar post", event_post_path(@event, post), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger mt-3' %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
+
+            <!-- New Post -->
+            <%= simple_form_for [@event, @post] do |f| %>
+              <div class="form-group mt-3">
+                <%= f.input :content, as: :text, label: false, input_html: { class: 'form-control bg-white' } %>
+              </div>
+              <div class="text-end d-flex justify-content-between mb-4">
+                <%= link_to 'Voltar aos eventos', events_path, class: 'btn btn-sm btn-outline-primary' %>
+                <%= f.button :submit, 'Post', class: 'btn btn-sm btn-primary' %>
+              </div>
+            <% end %>
+          </div>
     </div>
 
     <div class='col-sm-12 col-lg-5'>
