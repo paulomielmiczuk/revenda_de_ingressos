@@ -1,20 +1,18 @@
 <div id="<%= dom_id(comment) %>">
-  <div class="mt-2 forum-comment">
-    <div class="d-flex">
-      <% if comment.user.photo.attached? %>
-        <%= cl_image_tag comment.user.photo.key, widht: 30, class: 'forum-avatar', crop: :fill %>
-      <% else %>
-        <%= image_tag "avatar.svg", width: 30, class: 'me-2'  %>
-      <% end %>
-        <div>
-          <p class='forum-user'><%= comment.user.email %>:</p>
-          <div class="d-flex align-items-center">
-            <p class='forum-text'><%= comment.content %></p>
-            <% if comment.user == current_user %>
-              <%= link_to "Deletar", event_post_comment_path(@event, post, comment), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'delete-comment text-danger' %>
-            <% end %>
-          </div>
+  <div class="d-flex align-items-center mt-2">
+    <% if comment.user.photo.attached? %>
+      <%= cl_image_tag comment.user.photo.key, class: 'forum-avatar', crop: :fill %>
+    <% else %>
+      <%= image_tag "avatar.svg", class: 'forum-avatar'  %>
+    <% end %>
+      <div>
+        <p class='forum-user'><%= comment.user.email %>:</p>
+        <div class="d-flex align-items-center">
+          <p class='forum-text'><%= comment.content %></p>
+          <% if comment.user == current_user %>
+            <%= link_to "Deletar", event_post_comment_path(@event, post, comment), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'delete-comment text-danger' %>
+          <% end %>
         </div>
-    </div>
+      </div>
   </div>
 </div>
