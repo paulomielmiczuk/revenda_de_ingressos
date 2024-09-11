@@ -99,14 +99,20 @@ puts 'Events created!'
 
 puts 'Creating tickets...'
 
-ticket1 = Ticket.create!(user: user1, event: event1, ticket_type: 'meia', available: true, price: 20)
-ticket2 = Ticket.create!(user: user2, event: event3, ticket_type: 'inteira', available: true, price: 30)
-ticket3 = Ticket.create!(user: user4, event: event8, ticket_type: 'meia', available: true, price: 100)
-ticket4 = Ticket.create!(user: user4, event: event9, ticket_type: 'meia', available: true, price: 15)
-ticket5 = Ticket.create!(user: user4, event: event9, ticket_type: 'meia', available: true, price: 15)
-ticket6 = Ticket.create!(user: user1, event: event9, ticket_type: 'inteira', available: true, price: 30)
-ticket7 = Ticket.create!(user: user1, event: event9, ticket_type: 'meia', available: true, price: 15)
-ticket8 = Ticket.create!(user: user2, event: event9, ticket_type: 'inteira', available: true, price: 30)
-ticket9 = Ticket.create!(user: user3, event: event9, ticket_type: 'inteira', available: true, price: 30)
+ticket_type1 = TicketType.create!(type_of_ticket: 'Meia', price_cents: 200, event: event1)
+ticket_type2 = TicketType.create!(type_of_ticket: 'Inteira', price_cents: 400, event: event1)
+ticket_type3 = TicketType.create!(type_of_ticket: 'Meia', price_cents: 200, event: event2)
+ticket_type4 = TicketType.create!(type_of_ticket: 'Inteira', price_cents: 400, event: event2)
+ticket_type5 = TicketType.create!(type_of_ticket: 'VIP', price_cents: 500, event: event2)
+
+ticket1 = Ticket.create!(user: user1, available: true, ticket_type: ticket_type1)
+ticket2 = Ticket.create!(user: user2, available: true, ticket_type: ticket_type2)
+ticket3 = Ticket.create!(user: user4, available: true, ticket_type: ticket_type3)
+ticket4 = Ticket.create!(user: user4, available: true, ticket_type: ticket_type4)
+ticket5 = Ticket.create!(user: user4, available: true, ticket_type: ticket_type5)
+ticket6 = Ticket.create!(user: user1, available: true, ticket_type: ticket_type3)
+ticket7 = Ticket.create!(user: user1, available: true, ticket_type: ticket_type2)
+ticket8 = Ticket.create!(user: user2, available: true, ticket_type: ticket_type1)
+ticket9 = Ticket.create!(user: user3, available: true, ticket_type: ticket_type4)
 
 puts 'Tickets created!'
