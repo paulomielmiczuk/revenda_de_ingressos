@@ -1,22 +1,21 @@
-<div class="container mt-5">
+<div class="container">
   <h2 class="mb-4">Envie seus tickets</h2>
-    <%= simple_form_for :tickets, url: update_images_tickets_path, method: :patch, html: { multipart: true, class: 'needs-validation', novalidate: true } do |f| %>
-      <div class="row">
-        <% @tickets.each do |ticket| %>
-          <div class="col-md-6 mb-3">
-            <div class="card">
-              <div class="card-body bg-white rounded p-4 shadow-sm">
-                <%= f.simple_fields_for :tickets, ticket do |ticket_form| %>
-                  <div class="form-group">
-                    <%= ticket_form.input :image, as: :file, label: "Ticket #{ticket.ticket_type}", input_html: { accept: 'image/*', class: 'form-control' } %>
-                  </div>
-                <% end %>
+
+  <%= simple_form_for :tickets, url: update_images_tickets_path, method: :patch, html: { multipart: true, class: 'needs-validation', novalidate: true } do |f| %>
+    <div class="tickets-container">
+      <% @tickets.each do |ticket| %>
+        <%= f.simple_fields_for :tickets, ticket do |ticket_form| %>
+          <div class='order-ticket'>
+            <div class="order-ticket-infos">
+              <div class="form-group">
+                <%= ticket_form.input :image, as: :file, label: "#{ticket.ticket_type}", input_html: { accept: 'image/*', class: 'form-control' } %>
               </div>
             </div>
           </div>
         <% end %>
-      </div>
-    <div class="text-center mt-4">
+      <% end %>
+    </div>
+    <div class="mt-4">
       <%= f.submit 'Enviar arquivos', class: 'btn btn-primary' %>
     </div>
   <% end %>
