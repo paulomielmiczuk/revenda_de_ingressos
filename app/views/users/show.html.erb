@@ -9,8 +9,9 @@
             <% else %>
               <%= image_tag "avatar.svg", class: "avatar-large", alt: "dropdown menu" %>
             <% end %>
+
             <div class="text-center mt-4">
-              <%= link_to "Editar perfil", edit_user_registration_path, class: 'btn btn-outline-primary' %>
+              <%= link_to "Editar <i class='fa fa-edit'></i>".html_safe, edit_user_registration_path, class: 'btn btn-outline-primary px-4' %>
             </div>
           </div>
           <div class="card-body ms-4 mt-4">

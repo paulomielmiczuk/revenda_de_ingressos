@@ -3,20 +3,28 @@
     <div class="form-group">
       <%= f.input :title, label: false, placeholder: 'Título', input_html: { class: 'form-control' } %>
     </div>
-    <div class="form-group">
-      <%= f.input :location, label: false, placeholder: 'Local', input_html: { class: 'form-control' } %>
+
+    <div class="form-group mb-3 position-relative">
+      <i class="fa-solid fa-location-dot position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%); color: #FF6600;"></i>
+      <%= f.input :location, label: false, placeholder: 'Local', input_html: { class: 'form-control', style: 'padding-left: 35px;' } %>
     </div>
+
     <div class="form-group">
       <%= f.input :description, label: false, as: :text, placeholder: 'Descrição', input_html: { class: 'form-control' } %>
     </div>
-    <div class="form-group">
-      <%= f.input :date, label: false, as: :string, placeholder: 'Data', input_html: { data: { controller: "flatpickr" } } %>
+
+    <div class="form-group mb-3 position-relative">
+      <i class="fa-regular fa-calendar position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%); color: #FF6600;"></i>
+      <%= f.input :date, label: false, as: :string, placeholder: 'Data', input_html: { data: { controller: "flatpickr" }, class: 'form-control', style: 'padding-left: 35px;' } %>
     </div>
-    <div class="form-group">
-      <%= f.input :photo, label: false, as: :file, input_html: { class: 'form-control-file' } %>
+
+    <div class="form-group mb-4 position-relative">
+      <i class="fa fa-upload position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%); color: #FF6600;"></i>
+      <%= f.input :photo, label: false, as: :file, input_html: { class: 'form-control-file', style: 'padding-left: 35px;' } %>
     </div>
+
     <div class="form-group text-center">
-      <%= f.button :submit, "Criar Evento", class: 'btn btn-primary' %>
+      <%= f.button :submit, "Enviar", class: 'btn btn-primary' %>
     </div>
   <% end %>
 </div>
