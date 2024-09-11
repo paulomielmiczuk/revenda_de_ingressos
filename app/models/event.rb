@@ -3,6 +3,7 @@ class Event < ApplicationRecord
   has_many :ticket_types, dependent: :destroy
   has_many :tickets, through: :ticket_types
   has_many :posts, dependent: :destroy
+  accepts_nested_attributes_for :ticket_types, reject_if: :all_blank, allow_destroy: true
 
   has_one_attached :photo
 

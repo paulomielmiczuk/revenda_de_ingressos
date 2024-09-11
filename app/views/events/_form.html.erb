@@ -15,6 +15,21 @@
     <div class="form-group">
       <%= f.input :photo, label: false, as: :file, input_html: { class: 'form-control-file' } %>
     </div>
+
+
+    <h3 class="text-xl mt-4">Tipos de ingressos</h3>
+    <div class="my-2" data-controller="nested-rondo" data-nested-rondo-field-class-value="ticket-type-field">
+      <div data-nested-rondo-target="fieldContain">
+        <%= f.simple_fields_for :ticket_types do |ticket_type| %>
+          <%= render "ticket_type_fields", f: ticket_type %>
+        <% end %>
+      </div>
+      <div class="links">
+        <%= link_to_add_association "Adicionar Tipo de Ingresso", f, :ticket_types %>
+      </div>
+    </div>
+
+
     <div class="form-group text-center">
       <%= f.button :submit, "Criar Evento", class: 'btn btn-primary' %>
     </div>

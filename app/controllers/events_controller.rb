@@ -29,9 +29,7 @@ class EventsController < ApplicationController
   end
 
   def new
-    if current_user.company? == true
-      @event = Event.new
-    end
+    @event = Event.new
   end
 
   def create
@@ -70,6 +68,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :location, :date, :photo)
+    params.require(:event).permit(:title, :description, :location, :date, :photo, ticket_types_attributes: [:type_of_ticket, :price_cents, :_destroy, :id])
   end
 end

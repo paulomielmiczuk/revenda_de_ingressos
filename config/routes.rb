@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :users, only: [:show]
   resources :events do
+    resources :ticket_types, only: %i[new create]
     resources :tickets, only: %i[new create destroy]
     resources :orders, only: %i[new create]
     resources :posts, only: %i[new create destroy] do
