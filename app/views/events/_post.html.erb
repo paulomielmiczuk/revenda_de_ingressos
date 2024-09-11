@@ -4,11 +4,11 @@
     <div class="mt-3">
       <div class="forum-card">
         <div class="d-flex justify-content-between align-items-center">
-          <div class='d-flex'>
+          <div class='d-flex align-items-center'>
             <% if post.user.photo.attached? %>
-              <%= cl_image_tag post.user.photo.key, width: 30, class: 'forum-avatar', crop: :fill %>
+              <%= cl_image_tag post.user.photo.key, crop: :fill, class: 'forum-avatar' %>
             <% else %>
-              <%= image_tag "avatar.svg", width: 30, class: 'me-2'  %>
+              <%= image_tag "avatar.svg", crop: :fill, class: 'forum-avatar'  %>
             <% end %>
             <div>
               <p class='forum-user'><%= post.user.email %></p>
@@ -20,19 +20,21 @@
           <% end %>
         </div>
         <!-- Comments -->
-        <div id="post_<%= post.id %>_comments">
-          <% post.comments.order(created_at: :asc).each do |comment| %>
-            <%= render "events/comment", comment: comment, post: post %>
-          <% end %>
-        </div>
-        <!-- Add Comment -->
-        <% if user_signed_in? %>
-          <div class="mt-3">
-            <%= simple_form_for [@event, post, post.comments.new], html: { data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }, class: 'form-inline' } do |f| %>
-              <%= f.input :content, as: :string, label: false, input_html: { class: 'form-control bg-white forum-input', placeholder: 'Adicione um comentário...' } %>
-              <%= f.button :submit, 'Comment', class: 'btn btn-sm btn-outline-primary d-none' %>
+        <div class='mt-2 forum-comments'>
+          <div id="post_<%= post.id %>_comments">
+            <% post.comments.order(created_at: :asc).each do |comment| %>
+              <%= render "events/comment", comment: comment, post: post %>
             <% end %>
           </div>
+          <!-- Add Comment -->
+          <% if user_signed_in? %>
+            <div class="mt-3">
+              <%= simple_form_for [@event, post, post.comments.new], html: { data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }, class: 'form-inline' } do |f| %>
+                <%= f.input :content, as: :string, label: false, input_html: { class: 'forum-input bg-white', placeholder: 'Adicione um comentário...' } %>
+                <%= f.button :submit, 'Comment', class: 'btn btn-sm btn-outline-primary d-none' %>
+              <% end %>
+          </div>
+        </div>
         <% end %>
       </div>
     </div>
