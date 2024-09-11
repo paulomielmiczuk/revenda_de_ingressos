@@ -30,28 +30,32 @@ body {
   width: 40px;
 }
 
-.search {
-  width: 600px;
-  padding: 10px;
-  border-radius: 10px 0px 0px 10px;
-  overflow: hidden;
+.search-container {
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 10px 15px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  left: 35%;
+  transform: translateX(-35%);
 }
 
-.search:hover {
-  box-shadow: #373A40;
+.input-group {
+  width: 100%;
 }
 
-.search-btn{
-  width: 100px;
-  border-radius: 0px 10px 10px 0px;
-  background: rgb(0, 0, 0);
-  border: #000000;
-  color: #ffffff;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+.form-control.no-border {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  align-items: center;
+  align-items: center;
+}
+
+.form-control {
   margin: 0;
-  text-align: center;
+  padding: 0.5rem;
 }
 
 .my_events-btn {
@@ -61,7 +65,7 @@ body {
   border: 1px solid #000000;
   color: #ffffff;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  margin-right: 20px;
+  margin-left: 10px;
   text-align: center;
   text-decoration: none;
   display: inline-flex;
@@ -71,8 +75,57 @@ body {
 }
 
 .my_events-btn:hover {
-  background-color: #FF6600;
-  border: 1px solid #FF6600;
+  background-color: #FF7D26;
+  border: 1px solid #FF7D26;
+  color: #000000;
+}
+
+.search-btn {
+  width: 150px;
+  border-radius: 20px;
+  background: rgb(0, 0, 0);
+  border: 1px solid #000000;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin-left: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  background-image: url('../images/Lupa.png');
+}
+
+.search-btn:hover {
+  background-color: #FF7D26;
+  background-image: url('../images/Lupa.png');
+  border: 1px solid #FF7D26;
+  color: #000000;
+}
+
+
+.field-btn {
+  width: 150px;
+  border-radius: 20px;
+  background: rgb(255, 255, 255);
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  margin-right: 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  background-image: url('../images/Lupa.png');
+}
+
+.field-btn:hover {
+  background-color: #ffffff;
+  background-image: url('../images/Lupa.png');
+  border: 1px solid #FF7D26;
   color: #000000;
   transition: background-color 0.3s ease;
 }

@@ -1,11 +1,9 @@
 <div class="container">
-<div class="d-flex justify-content-between mb-4">
-  <div>
-    <h1>Meus Eventos</h1>
-  </div>
-  <div>
-    <%= link_to 'Adicionar novo evento', new_event_path, class: 'my_events-btn btn-primary rounded' %>
-  </div> 
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>Meus Eventos</h1>
+    <div>
+      <%= link_to 'Adicionar novo evento', new_event_path, class: 'btn btn-primary' %>
+    </div>
 </div>
 
 <% if @my_events.any? %>
@@ -27,11 +25,32 @@
       <% end %>
     </div>
   </div>
-<% else %>
-  <p>Nenhum evento encontrado</p>
-<% end %>
 
-<div class="text-center mt-4">
-  <%= link_to 'Todos os eventos', events_path, class: 'my_events-btn btn-outline-primary rounded' %>
+  <% if @my_events.any? %>
+    <div class="scrollable-container mt-3">
+      <div class="grid" data-controller='masonry'>
+        <% @my_events.each do |event| %>
+          <div class="grid-item d-none" data-masonry-target='item'>
+            <% if event.photo.present? && event.photo.key.present? %>
+              <%= cl_image_tag(event.photo.key, crop: :fill, data: { masonry_target: :image }) %>
+            <% end %>
+            <div class="card-content">
+              <h2><%= event.title %></h2>
+              <p><%= event.location %></p>
+              <p><strong><%= event.date.strftime("%d-%m-%Y") %></strong></p>
+              <%= link_to "Editar evento", edit_event_path(event), class: 'btn btn-sm btn-outline-warning rounded' %>
+              <%= link_to "Remover evento", event_path(event), data: { turbo_method: :delete, turbo_confirm: 'Tem certeza?' }, class: 'btn btn-sm btn-outline-danger rounded' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <p>Nenhum evento encontrado</p>
+  <% end %>
+
+  <div class="text-center mt-4">
+    <%= link_to 'Todos os eventos', events_path, class: 'btn btn-outline-primary' %>
+  </div>
 </div>
 </div>
