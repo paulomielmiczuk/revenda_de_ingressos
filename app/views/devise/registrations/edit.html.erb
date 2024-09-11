@@ -8,7 +8,7 @@
           <%= f.error_notification %>
 
           <div class="form-inputs">
-            <!-- Email field with icon -->
+
             <div class="form-group mb-3 position-relative">
               <i class="fa-solid fa-envelope position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%); color: #FF6600;"></i>
               <%= f.input :email, required: true, autofocus: true, label: false, placeholder: 'Email', input_html: { class: 'form-control', style: 'padding-left: 35px;' } %>
@@ -18,19 +18,16 @@
               <p class="text-warning">Aguardando confirmação para: <strong><%= resource.unconfirmed_email %></strong></p>
             <% end %>
 
-            <!-- Password field with icon -->
             <div class="form-group mb-3 position-relative">
               <i class="fa-solid fa-lock position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%); color: #FF6600;"></i>
               <%= f.input :password, label: false, placeholder: 'Senha', required: false, input_html: { class: 'form-control', autocomplete: 'new-password', style: 'padding-left: 35px;' } %>
             </div>
 
-            <!-- Password confirmation field with icon -->
             <div class="form-group mb-3 position-relative">
               <i class="fa-solid fa-lock position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%); color: #FF6600;"></i>
               <%= f.input :password_confirmation, label: false, placeholder: 'Confirmação da Senha', required: false, input_html: { class: 'form-control', autocomplete: 'new-password', style: 'padding-left: 35px;' } %>
             </div>
 
-            <!-- Current password field with icon -->
             <div class="form-group mb-3 position-relative">
               <i class="fa-solid fa-lock position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%); color: #FF6600;"></i>
               <%= f.input :current_password, label: false, placeholder: 'Senha Atual', required: true, input_html: { class: 'form-control', autocomplete: 'current-password', style: 'padding-left: 35px;' } %>
@@ -50,11 +47,10 @@
                         data: { confirm: "Tem certeza?", turbo_confirm: "Tem certeza?" },
                         method: :delete %>
         </div>
-
-        <div class="text-center mt-3">
-          <%= link_to "Voltar", :back, class: 'btn btn-link' %>
-        </div>
       </div>
+        <div class="text-center mt-3">
+          <%= link_to "Voltar", :back, class: 'btn btn-secondary rounded mt-4' %>
+        </div>
     </div>
   </div>
 </div>

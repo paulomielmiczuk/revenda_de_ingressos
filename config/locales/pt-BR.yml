@@ -1,0 +1,20 @@
+pt-BR:
+  devise:
+    confirmations:
+      confirmed: "Sua conta foi confirmada com sucesso."
+      not_found: "O código de confirmação não pôde ser encontrado."
+      send_instructions: "Instruções de confirmação enviadas para o seu e-mail."
+    sessions:
+      signed_in: "Você entrou com sucesso."
+      signed_out: "Você saiu com sucesso."
+    passwords:
+      send_instructions: "Instruções de recuperação de senha enviadas para o seu e-mail."
+      updated: "Sua senha foi atualizada com sucesso."
+      updated_not_active: "Sua senha não foi atualizada."
+    registrations:
+      signed_up: "Você se registrou com sucesso."
+      updated: "Sua conta foi atualizada com sucesso."
+      destroyed: "Sua conta foi deletada com sucesso."
+    unlocks:
+      unlocked: "Sua conta foi desbloqueada com sucesso."
+      send_instructions: "Instruções de desbloqueio enviadas para o seu e-mail."
