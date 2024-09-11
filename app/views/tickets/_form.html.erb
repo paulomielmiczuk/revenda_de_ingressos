@@ -15,6 +15,9 @@
 
     <%= form.hidden_field :event_id, value: @event.id %>
 
-    <%= form.submit 'Vender ingressos', class: 'btn btn-primary mt-3' %>
+    <div class="text-center mt-3">
+      <%= form.submit 'Vender ingressos', class: 'btn btn-primary' %>
+    </div>
+
   <% end %>
 </div>

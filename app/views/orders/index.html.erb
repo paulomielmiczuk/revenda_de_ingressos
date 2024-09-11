@@ -1,21 +1,21 @@
 <div class="container">
   <h1 class='mb-3'>Pedidos</h1>
 
-  <div class="d-flex">
+  <div class="tickets-container pb-4">
     <% if @orders.present? %>
       <% @orders.each do |event, orders| %>
-      <div class="grid-item">
-        <div class='card-content'>
-        <div class='d-flex justify-content-between align-items-center'>
+      <div class="order-ticket">
+        <div class='order-ticket-infos'>
+        <div class='d-flex justify-content-between align-items-center mb-3'>
           <h2><%= event.title %></h2>
-          <p><%= event.date.strftime("%d-%m-%Y") %></p>
+          <p><strong><%= event.date.strftime("%d-%m-%Y") %></strong></p>
         </div>
           <p class='mt-1 mb-3'><%= event.location %></p>
 
           <ol class='ps-0'>
             <% orders.each do |order| %>
               <li class='d-flex align-items-center'>
-                ● <strong class='mt-0 ms-2'> <%= order.ticket.ticket_type %> - <%= humanized_money_with_symbol(order.ticket.price) %></strong>
+                ● <div class='mt-0 ms-2 order-item'> <%= order.ticket.ticket_type %> - <%= humanized_money_with_symbol(order.ticket.price) %></div>
                 <%= link_to 'Remover', order_path(order), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'ms-3' %>
               </li>
             <% end %>
@@ -32,6 +32,6 @@
     <% end %>
 
   <% else %>
-    <p>No orders to process!</p>
+    <p>Sem pedidos para processar!</p>
   <% end %>
 </div>

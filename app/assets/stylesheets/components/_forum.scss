@@ -1,7 +1,7 @@
 .forum-card {
   background-color: white;
   border-radius: 0px;
-  padding: 16px 16px 4px 16px;
+  padding: 16px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -14,8 +14,8 @@
   margin: 0 0;
 }
 
-.forum-comment {
-  margin-left: 35px;
+.forum-comments {
+  margin-left: 42px;
 }
 
 .delete-comment {
@@ -25,11 +25,9 @@
 }
 
 .forum-input {
-  width: 95%;
+  width: 100%;
   height: 31px;
-  margin-left: 35px;
   margin-bottom: 0;
-  flex: 1;
 }
 
 .forum-form {
