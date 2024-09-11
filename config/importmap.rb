@@ -16,3 +16,4 @@ pin "get-size" # @2.0.3
 pin "outlayer" # @2.1.1
 pin "mapbox-gl", to: "https://ga.jspm.io/npm:mapbox-gl@3.1.2/dist/mapbox-gl.js"
 pin "process", to: "https://ga.jspm.io/npm:@jspm/core@2.0.1/nodelibs/browser/process-production.js"
+
