@@ -18,7 +18,7 @@ class TicketsController < ApplicationController
   end
 
   def create
-    ticket_params[:ticket_types].each do |ticket_type_id, quantity|
+    params[:ticket_types].each do |ticket_type_id, quantity|
       quantity = quantity.to_i
       next if quantity <= 0
 

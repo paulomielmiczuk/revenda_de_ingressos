@@ -2,21 +2,21 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @orders = Order.where(user: current_user).includes(:ticket).group_by { |order| order.ticket.event }
-    @total_price = @orders.values.flatten.sum { |order| order.ticket.price_cents * order.quantity } / 100.0
+    @orders = Order.where(user: current_user).includes(:ticket).group_by { |order| order.ticket.ticket_type.event }
+    @total_price = @orders.values.flatten.sum { |order| order.ticket.ticket_type.price_cents * order.quantity } / 100.0
   end
 
   def create
     @event = Event.find(params[:order][:event_id])
-    ticket_types = @event.tickets.group(:ticket_type).count
+    ticket_types = TicketType.where(event: @event)
     order_params = params[:order]
 
-    ticket_types.each_key do |ticket_type|
-      quantity = order_params["#{ticket_type}_quantity"].to_i
+    ticket_types.each do |ticket_type|
+      quantity = order_params["#{ticket_type.type_of_ticket}_quantity"].to_i
       if quantity.positive?
-        tickets = Ticket.where(event: @event, ticket_type:).limit(quantity)
+        tickets = Ticket.where(ticket_type: ticket_type).limit(quantity)
         tickets.each do |ticket|
-          Order.create!(ticket:, user: current_user, quantity: 1, processed: false)
+          Order.create!(ticket: ticket, user: current_user, quantity: 1, processed: false, amount_cents: ticket.ticket_type.price_cents)
         end
       end
     end
