@@ -1,10 +1,11 @@
+<div class="container">
 <div class="d-flex justify-content-between mb-4">
   <div>
     <h1>Meus Eventos</h1>
   </div>
   <div>
-    <%= link_to 'Adicionar novo evento', new_event_path, class: 'my_events-btn btn-success rounded' %>
-  </div>
+    <%= link_to 'Adicionar novo evento', new_event_path, class: 'my_events-btn btn-primary rounded' %>
+  </div> 
 </div>
 
 <% if @my_events.any? %>
@@ -32,4 +33,5 @@
 
 <div class="text-center mt-4">
   <%= link_to 'Todos os eventos', events_path, class: 'my_events-btn btn-outline-primary rounded' %>
+</div>
 </div>

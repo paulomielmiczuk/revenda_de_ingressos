@@ -2,54 +2,51 @@
   <div class="row">
     <div class="col-12 col-md-8 col-lg-6 mx-auto">
       <div class="bg-white rounded p-4 shadow-sm">
-        <h2 class="mb-4 text-center">Editar <%= resource_name.to_s.humanize %></h2>
+        <h2 class="mb-4 text-center">Editar Usuário</h2>
 
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= f.error_notification %>
 
           <div class="form-inputs">
-            <div class="form-group">
-              <%= f.input :email, required: true, autofocus: true, label: "Email", input_html: { class: 'form-control' } %>
+            <!-- Email field with icon -->
+            <div class="form-group mb-3 position-relative">
+              <i class="fa-solid fa-envelope position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%); color: #FF6600;"></i>
+              <%= f.input :email, required: true, autofocus: true, label: false, placeholder: 'Email', input_html: { class: 'form-control', style: 'padding-left: 35px;' } %>
             </div>
 
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <p class="text-warning">Aguardando confirmação para: <strong><%= resource.unconfirmed_email %></strong></p>
             <% end %>
 
-            <div class="form-group">
-              <%= f.input :password,
-                          label: "Senha",
-                          hint: "Deixe em branco caso não deseje alterar",
-                          required: false,
-                          input_html: { class: 'form-control', autocomplete: "new-password" } %>
+            <!-- Password field with icon -->
+            <div class="form-group mb-3 position-relative">
+              <i class="fa-solid fa-lock position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%); color: #FF6600;"></i>
+              <%= f.input :password, label: false, placeholder: 'Senha', required: false, input_html: { class: 'form-control', autocomplete: 'new-password', style: 'padding-left: 35px;' } %>
             </div>
 
-            <div class="form-group">
-              <%= f.input :password_confirmation,
-                          label: "Confirmação da Senha",
-                          required: false,
-                          input_html: { class: 'form-control', autocomplete: "new-password" } %>
+            <!-- Password confirmation field with icon -->
+            <div class="form-group mb-3 position-relative">
+              <i class="fa-solid fa-lock position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%); color: #FF6600;"></i>
+              <%= f.input :password_confirmation, label: false, placeholder: 'Confirmação da Senha', required: false, input_html: { class: 'form-control', autocomplete: 'new-password', style: 'padding-left: 35px;' } %>
             </div>
 
-            <div class="form-group">
-              <%= f.input :current_password,
-                          label: "Senha Atual",
-                          hint: "Precisamos de sua senha atual para alterar as informações",
-                          required: true,
-                          input_html: { class: 'form-control', autocomplete: "current-password" } %>
+            <!-- Current password field with icon -->
+            <div class="form-group mb-3 position-relative">
+              <i class="fa-solid fa-lock position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%); color: #FF6600;"></i>
+              <%= f.input :current_password, label: false, placeholder: 'Senha Atual', required: true, input_html: { class: 'form-control', autocomplete: 'current-password', style: 'padding-left: 35px;' } %>
             </div>
           </div>
 
           <div class="form-actions text-center">
-            <%= f.button :submit, "Atualizar", class: 'btn btn-primary w-100' %>
+            <%= f.button :submit, "Atualizar", class: 'btn btn-primary' %>
           </div>
         <% end %>
 
-        <h5 class="m-4 text-center">Cancelar conta</h5>
-        <div class="text-center">
+        <h5 class="my-4">Deseja cancelar sua conta?</h5>
+        <div>
           <%= button_to "Cancelar minha conta",
                         registration_path(resource_name),
-                        class: 'btn btn-danger',
+                        class: 'btn btn-outline-danger',
                         data: { confirm: "Tem certeza?", turbo_confirm: "Tem certeza?" },
                         method: :delete %>
         </div>
