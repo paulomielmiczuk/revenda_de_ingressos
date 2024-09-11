@@ -1,7 +1,7 @@
 <div class="form-group">
-  <%= f.input :type_of_ticket, label: false, placeholder: 'Tipo de título', input_html: { class: 'form-control' } %>
+  <%= f.input :type_of_ticket, label: false, placeholder: 'Tipo de ingresso', input_html: { class: 'form-control' } %>
 </div>
 <div class="form-group">
-  <%= f.input :price_cents, label: false, as: :integer, placeholder: 'Preço em centavos', input_html: { class: 'form-control' } %>
+  <%= f.input :price, label: 'Preço em centavos', as: :integer, input_html: { min: 0, class: 'form-control' } %>
 </div>
 <%= link_to_remove_association "Remover Tipo de Ingresso", f %>

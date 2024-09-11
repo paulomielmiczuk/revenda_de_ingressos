@@ -17,15 +17,15 @@
     </div>
 
 
-    <h3 class="text-xl mt-4">Tipos de ingressos</h3>
+    <h5 class='mt-4'>Tipos de ingressos</h5>
     <div class="my-2" data-controller="nested-rondo" data-nested-rondo-field-class-value="ticket-type-field">
       <div data-nested-rondo-target="fieldContain">
         <%= f.simple_fields_for :ticket_types do |ticket_type| %>
           <%= render "ticket_type_fields", f: ticket_type %>
         <% end %>
       </div>
-      <div class="links">
-        <%= link_to_add_association "Adicionar Tipo de Ingresso", f, :ticket_types %>
+      <div>
+        <%= link_to_add_association " + ", f, :ticket_types, class: 'btn btn-sm btn-outline-success rounded-circle text-decoration-none' %>
       </div>
     </div>
 

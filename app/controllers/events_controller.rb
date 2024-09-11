@@ -58,7 +58,7 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy!
-    redirect_to events_path
+    redirect_to my_events_path
   end
 
   def my_events

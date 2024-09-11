@@ -5,7 +5,7 @@
     <%= form_with url: event_tickets_path(@event), method: :post, local: true do |f| %>
       <% @event.ticket_types.each do |ticket_type| %>
         <div class="form-group">
-          <%= label_tag "ticket_types[#{ticket_type.id}]", "#{ticket_type.type_of_ticket}", class: "form-label" %>
+          <%= label_tag "ticket_types[#{ticket_type.id}]", "#{ticket_type.type_of_ticket} (Preço: #{ticket_type.price_cents} cada)", class: "form-label" %>
           <%= number_field_tag "ticket_types[#{ticket_type.id}]", 0, min: 0, step: 1, class: "form-control", placeholder: "Quantity" %>
         </div>
       <% end %>
