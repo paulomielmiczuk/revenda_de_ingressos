@@ -4,10 +4,11 @@
 
   <%= simple_form_for [@event, @order] do |form| %>
     <% @event.ticket_types.each do |ticket_type| %>
+      <% available_count = Ticket.where(ticket_type: ticket_type, available: true).count %>
       <div class="form-group">
-        <%= form.input "#{ticket_type.type_of_ticket}_quantity", label: "#{ticket_type.type_of_ticket.capitalize} - #{ticket_type.tickets.count} #{ticket_type.tickets.count > 1 ? 'disponíveis' : 'disponível'} (Preço: R$#{ticket_type.price_cents / 10.0} cada)",
+        <%= form.input "#{ticket_type.type_of_ticket}_quantity", label: "#{ticket_type.type_of_ticket.capitalize} - #{available_count} #{available_count > 1 ? 'disponíveis' : 'disponível'} (Preço: R$#{ticket_type.price_cents / 100.0} cada)",
                       as: :integer,
-                      input_html: { min: 0, max: ticket_type.tickets.count, step: 1, value: 0 },
+                      input_html: { min: 0, max: available_count, step: 1, value: 0 },
                       required: false %>
       </div>
     <% end %>

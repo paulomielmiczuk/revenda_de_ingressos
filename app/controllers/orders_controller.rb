@@ -14,8 +14,8 @@ class OrdersController < ApplicationController
     ticket_types.each do |ticket_type|
       quantity = order_params["#{ticket_type.type_of_ticket}_quantity"].to_i
       if quantity.positive?
-        tickets = Ticket.where(ticket_type: ticket_type).limit(quantity)
-        tickets.each do |ticket|
+        available_tickets = Ticket.where(ticket_type: ticket_type, available: true).limit(quantity)
+        available_tickets.each do |ticket|
           Order.create!(ticket: ticket, user: current_user, quantity: 1, processed: false, amount_cents: ticket.ticket_type.price_cents)
         end
       end

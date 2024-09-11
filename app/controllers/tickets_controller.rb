@@ -52,6 +52,6 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-    params.permit(ticket_types: [:id, :quantity])
+    params.require(:ticket).permit(:available, ticket_types: %i[id quantity])
   end
 end
