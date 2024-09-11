@@ -1,0 +1,34 @@
+.order-ticket {
+  overflow: hidden;
+  width: 32%;
+  background: white;
+  display: flex;
+  box-shadow: 0 15px 15px -14px rgba(0,0,0,0.2);
+}
+
+.order-ticket h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.order-ticket p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.order-ticket li {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.order-ticket .order-item {
+  font-weight: bold;
+}
+
+.order-ticket .order-ticket-infos {
+  padding: 16px;
+}
