@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
 
   def create_checkout_session
     @orders = Order.where(user: current_user, processed: false)
-    @total_price = @orders.sum { |order| order.ticket.price_cents * order.quantity }
+    @total_price = @orders.sum { |order| order.ticket.ticket_type.price_cents * order.quantity }
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
@@ -41,9 +41,9 @@ class OrdersController < ApplicationController
           price_data: {
             currency: 'brl',
             product_data: {
-              name: order.ticket.ticket_type,
+              name: order.ticket.ticket_type.type_of_ticket,
             },
-            unit_amount: order.ticket.price_cents,
+            unit_amount: order.ticket.ticket_type.price_cents,
           },
           quantity: order.quantity,
         }
