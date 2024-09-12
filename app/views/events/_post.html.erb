@@ -16,7 +16,7 @@
             </div>
           </div>
           <% if post.user == current_user %>
-            <%= link_to "Deletar post", event_post_path(@event, post), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %>
+            <%= link_to "Deletar", event_post_path(@event, post), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %>
           <% end %>
         </div>
         <!-- Comments -->
