@@ -30,28 +30,26 @@ class TicketsController < ApplicationController
       end
     end
 
-    redirect_to tickets_path
-    # if created_tickets.any?
-    #   redirect_to add_images_tickets_path(ticket_ids: created_tickets.map(&:id))
-    # else
-    #   redirect_to tickets_path, notice: 'Nenhum ticket adicionado'
-    # end
+    # redirect_to tickets_path
+    if created_tickets.any?
+      redirect_to add_images_tickets_path(ticket_ids: created_tickets.map(&:id))
+    else
+      redirect_to tickets_path, notice: 'Nenhum ticket adicionado'
+    end
   end
 
-  # def add_images
-  #   @tickets = Ticket.where(id: params[:ticket_ids])
-  # end
+  def add_images
+    @tickets = Ticket.where(id: params[:ticket_ids])
+  end
 
-  # def upload_images
-  #   @tickets = Ticket.where(id: params[:ticket_ids])
-  #   raise
-  #   if params[:ticket] && params[:ticket][:photo]
-  #     @ticket.photo.attach(params[:ticket][:photo])
-  #     redirect_to tickets_path, notice: 'Arquivo enviado'
-  #   else
-  #     redirect_to tickets_path, alert: 'Nenhum arquivo selecionado'
-  #   end
-  # end
+  def upload_images
+    # @tickets = Ticket.where(id: params[:ticket_ids])
+    # raise
+    @ticket = Ticket.where(id: params[:ticket][:ticket_id])
+    file = params[:ticket][:photo]
+    @ticket[0].photo.attach(file)
+    redirect_to tickets_path, notice: 'Arquivo enviado'
+  end
 
   def destroy
     @ticket = Ticket.find(params[:id])
