@@ -15,7 +15,7 @@
           <ol class='ps-0'>
             <% orders.each do |order| %>
               <li class='d-flex align-items-center'>
-                ● <div class='mt-0 ms-2 order-item'> <%= humanized_money_with_symbol(order.ticket.ticket_type.price_cents / 10.0) %> - <%= order.ticket.ticket_type.type_of_ticket.capitalize %></div>
+                ● <div class='mt-0 ms-2 order-item'> <%= humanized_money_with_symbol(order.ticket.ticket_type.price_cents / 100) %> - <%= order.ticket.ticket_type.type_of_ticket.capitalize %></div>
                 <%= link_to 'Remover', order_path(order), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'ms-3' %>
               </li>
             <% end %>

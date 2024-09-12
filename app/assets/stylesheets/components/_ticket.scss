@@ -57,9 +57,9 @@
 .sell {
   position: absolute;
   top: 145px;
-  right: 130px;
+  right: 132px;
   border: none;
-  color: #ff6600;
+  color: rgba(255,0,0,1);
   background: transparent;
   padding: 0 0;
   font-size: 10px;
@@ -89,4 +89,10 @@
 
 .card-ticket .card-ticket-infos {
   padding: 16px;
+}
+
+#ticket-image{
+  background-color: #ffffff;
+  border: none;
+  padding: 0;
 }

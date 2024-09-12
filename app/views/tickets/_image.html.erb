@@ -1,0 +1,7 @@
+<div class="text-center">
+<% if ticket.photo.attached? %>
+  <%= cl_image_tag(ticket.photo.key, crop: :fill) %>
+<% else %>
+  <p>Ticket em processamento</p>
+<% end %>
+</div>
