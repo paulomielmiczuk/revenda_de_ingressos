@@ -7,7 +7,7 @@
       <p>Data: <strong><%= ticket.ticket_type.event.date.strftime("%d-%m-%Y") %></strong></p>
       <p>Tipo: <strong><%= ticket.ticket_type.type_of_ticket %></strong>
 
-        <button type="button" data-bs-toggle="modal" data-bs-target="#ticketModal" style='width:100% none'>
+        <button id="ticket-image" type="button" data-bs-toggle="modal" data-bs-target="#ticketModal" style='width:100% none'>
           <i class="fa-regular fa-file" style="color: #000000;"></i>
         </button>
 
