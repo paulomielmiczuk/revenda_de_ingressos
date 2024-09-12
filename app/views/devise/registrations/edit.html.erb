@@ -34,22 +34,22 @@
             </div>
           </div>
 
-          <div class="form-actions text-center">
+          <div class="form-actions text-center mt-3">
             <%= f.button :submit, "Atualizar", class: 'btn btn-primary' %>
           </div>
         <% end %>
 
-        <h5 class="my-4">Deseja cancelar sua conta?</h5>
         <div>
+        <p class="mt-4">Deseja cancelar sua conta?</p>
           <%= button_to "Cancelar minha conta",
                         registration_path(resource_name),
-                        class: 'btn btn-outline-danger',
+                        class: 'btn btn-sm btn-outline-danger',
                         data: { confirm: "Tem certeza?", turbo_confirm: "Tem certeza?" },
                         method: :delete %>
         </div>
       </div>
-        <div class="text-center mt-3">
-          <%= link_to "Voltar", :back, class: 'btn btn-secondary rounded mt-4' %>
+        <div class="text-center mt-4">
+          <%= link_to "Voltar", :back, class: 'btn btn-secondary rounded' %>
         </div>
     </div>
   </div>

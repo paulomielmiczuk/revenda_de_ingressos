@@ -16,12 +16,12 @@ class OrdersController < ApplicationController
       if quantity.positive?
         available_tickets = Ticket.where(ticket_type: ticket_type, available: true).limit(quantity)
         available_tickets.each do |ticket|
-          Order.create!(ticket: ticket, user: current_user, quantity: 1, processed: false, amount_cents: ticket.ticket_type.price_cents)
+          Order.create!(ticket:, user: current_user, quantity: 1, processed: false, amount_cents: ticket.ticket_type.price_cents)
         end
       end
     end
 
-    redirect_to orders_path, notice: 'Your order has been placed successfully.'
+    redirect_to orders_path, notice: 'Seu pedido foi feito com sucesso'
   end
 
   def destroy
