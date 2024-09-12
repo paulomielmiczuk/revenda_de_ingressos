@@ -22,8 +22,8 @@ Rails.application.routes.draw do
 
   resources :tickets, only: %i[index update] do
     collection do
-      get 'edit_images', to: 'tickets#edit_images'
-      patch 'update_images', to: 'tickets#update_images'
+      get 'add_images', to: 'tickets#add_images'
+      patch 'upload_images', to: 'tickets#upload_images'
     end
   end
 

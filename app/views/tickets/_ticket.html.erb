@@ -3,7 +3,7 @@
     <div class="cut-left"></div>
     <%= cl_image_tag(ticket.ticket_type.event.photo.key, crop: :fill) %>
     <div class="card-ticket-infos">
-      <h2><%= ticket.ticket_type.event.title %></h2>
+      <h2><%= ticket.ticket_type.event.title %> <%= ticket.id %></h2>
       <p>Data: <strong><%= ticket.ticket_type.event.date.strftime("%d-%m-%Y") %></strong></p>
       <p>Tipo: <strong><%= ticket.ticket_type.type_of_ticket %></strong> <i class="fa-regular fa-file" style="color: #000000;"></i></p>
       <p>Preço: <strong><%= humanized_money_with_symbol(ticket.ticket_type.price_cents) %></strong></p>

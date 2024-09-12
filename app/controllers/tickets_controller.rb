@@ -18,18 +18,39 @@ class TicketsController < ApplicationController
   end
 
   def create
+    created_tickets = []
     params[:ticket_types].each do |ticket_type_id, quantity|
       quantity = quantity.to_i
       next if quantity <= 0
 
       ticket_type = TicketType.find(ticket_type_id)
       quantity.times do
-        Ticket.create!(user: current_user, ticket_type: ticket_type, available: true)
+        ticket = Ticket.create!(user: current_user, ticket_type: ticket_type, available: true)
+        created_tickets << ticket
       end
     end
 
-    redirect_to tickets_path, notice: 'Tickets were successfully created.'
+    redirect_to tickets_path
+    # if created_tickets.any?
+    #   redirect_to add_images_tickets_path(ticket_ids: created_tickets.map(&:id))
+    # else
+    #   redirect_to tickets_path, notice: 'Nenhum ticket adicionado!'
+    # end
   end
+
+  # def add_images
+  #   @tickets = Ticket.where(id: params[:ticket_ids])
+  # end
+
+  # def upload_images
+  #   @tickets = Ticket.where(id: params[:ticket_ids])
+  #   @tickets.each do |ticket|
+  #     if params[:tickets][ticket.id.to_s] && params[:tickets][ticket.id.to_s][:image]
+  #       ticket.image.attach(params[:tickets][ticket.id.to_s][:image])
+  #     end
+  #   end
+  #   redirect_to tickets_path, notice: 'Arquivos enviados!'
+  # end
 
   def destroy
     @ticket = Ticket.find(params[:id])
@@ -52,6 +73,6 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-    params.require(:ticket).permit(:available, ticket_types: %i[id quantity])
+    params.require(:ticket).permit(:image, :available, ticket_types: %i[id quantity])
   end
 end
