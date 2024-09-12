@@ -4,7 +4,7 @@
       <div class="bg-white rounded p-4 shadow-sm">
         <h2 class="mb-4 text-center">Faça seu login</h2>
 
-        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name, redirect_to: request.referer)) do |f| %>
           <%= f.error_notification %>
 
           <div class="form-inputs mb-4">
@@ -33,6 +33,8 @@
               </div>
             <% end %>
           </div>
+
+          <% hidden_field_tag request.referer %>
 
           <div class="form-actions text-center">
             <%= f.button :submit, "Entrar", class: 'btn btn-primary w-100' %>
