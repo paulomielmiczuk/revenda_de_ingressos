@@ -8,8 +8,8 @@
           <div class='order-ticket'>
             <div class="order-ticket-infos">
               <div class="form-group">
-                <%= ticket_form.input :photo, as: :file, label: "#{ticket.ticket_type.type_of_ticket} #{ticket.id}", input_html: { accept: 'photo/*', class: 'form-control' } %>
-                <%= ticket_form.hidden_field :ticket_id, value: ticket.id %>
+                <%= ticket_form.input :photo, as: :file, label: "#{ticket.ticket_type.type_of_ticket} #{ticket.id}", input_html: { accept: 'image/*', class: 'form-control' } %>
+                <%= ticket_form.hidden_field :id, value: ticket.id %>
               </div>
             </div>
           </div>

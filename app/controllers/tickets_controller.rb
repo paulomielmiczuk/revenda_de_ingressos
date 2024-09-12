@@ -48,7 +48,7 @@ class TicketsController < ApplicationController
     @ticket = Ticket.where(id: params[:ticket][:ticket_id])
     file = params[:ticket][:photo]
     @ticket[0].photo.attach(file)
-    redirect_to tickets_path, notice: 'Arquivo enviado'
+    redirect_to request.referer, notice: 'Arquivo enviado'
   end
 
   def destroy

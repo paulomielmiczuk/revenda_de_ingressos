@@ -1,19 +1,36 @@
 <div class="container">
   <h2 class="mb-4">Envie seus tickets</h2>
 
-  <% @tickets.each do |ticket| %>
-    <%= simple_form_for ticket, url: upload_images_tickets_path(ticket), method: :patch, html: { multipart: true, class: 'needs-validation', novalidate: true } do |f| %>
-      <div class='order-ticket'>
-        <div class="order-ticket-infos">
-          <div class="form-group">
-            <%= f.input :photo, as: :file, label: "#{ticket.ticket_type.type_of_ticket} #{ticket.id}", input_html: { accept: 'image/*', class: 'form-control' } %>
-            <%= f.hidden_field :ticket_id, value: ticket.id %>
+  <div class="tickets-container pb-4">
+    <% @tickets.each do |ticket| %>
+      <%= simple_form_for ticket, url: upload_images_tickets_path(ticket), method: :patch, html: { multipart: true, class: 'needs-validation', novalidate: true } do |f| %>
+        <% unless ticket.photo.attached? %>
+          <div class='upload-ticket'>
+            <div class="upload-ticket-infos">
+              <div class="form-group">
+                <%= f.input :photo, as: :file, label: "#{ticket.ticket_type.type_of_ticket}", input_html: { accept: 'image/*', class: 'form-control' } %>
+                <%= f.hidden_field :ticket_id, value: ticket.id %>
+              </div>
+              <div class="mt-4">
+                <%= f.submit 'Enviar arquivo', class: 'btn btn-outline-primary' %>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="mt-4">
-        <%= f.submit 'Enviar arquivo', class: 'btn btn-primary' %>
-      </div>
+        <% else %>
+          <div class='upload-ticket'>
+            <div class="upload-ticket-infos">
+              <div class='uploaded'>
+                <div class='migué'>
+                  <p><%= ticket.ticket_type.type_of_ticket %> - Arquivo enviado!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+  <div>
+    <%= link_to "Ver meus tickets", tickets_path, class: "btn btn-primary" %>
+  </div>
 </div>
