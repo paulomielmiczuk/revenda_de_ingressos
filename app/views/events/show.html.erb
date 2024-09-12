@@ -9,22 +9,22 @@
 
       <div class="d-flex my-3 justify-content-between">
         <% if current_user %>
-          <button type="button" class="btn btn-primary rounded me-1" data-bs-toggle="modal" data-bs-target="#sellTicketModal" style='width:100%'>
+          <button type="button" class="btn btn-vender rounded me-1" data-bs-toggle="modal" data-bs-target="#sellTicketModal" style='width:100%'>
             Vender
           </button>
-          <button type="button" class="btn btn-primary rounded ms-1" data-bs-toggle="modal" data-bs-target="#buyTicketModal" style='width:100%'>
+          <button type="button" class="btn btn-comprar rounded ms-1" data-bs-toggle="modal" data-bs-target="#buyTicketModal" style='width:100%'>
             Comprar
           </button>
         <% else %>
-          <%= link_to 'Vender', new_user_session_path, class: 'btn btn-primary rounded ms-1', style: 'width: 100%' %>
-          <%= link_to 'Comprar', new_user_session_path, class: 'btn btn-primary rounded ms-1', style: 'width: 100%' %>
+          <%= link_to 'Vender', new_user_session_path, class: 'btn btn-vender rounded ms-1', style: 'width: 100%' %>
+          <%= link_to 'Comprar', new_user_session_path, class: 'btn btn-comprar rounded ms-1', style: 'width: 100%' %>
         <% end %>
       </div>
 
       <div class='forum-card'>
         <div class='d-flex justify-content-between mt-3'>
           <div>
-            <div class='d-flex align-items-baseline'>
+            <div class='d-flex align-items-baseline mb-3'>
               <h3><%= @event.title %></h3>
             </div>
           </div>
@@ -33,8 +33,8 @@
           </div>
         </div>
 
-          <p class='h5'><%= @event.user.name %></p>
-          <p><%= @event.location %></p>
+          <p class='h5 mb-4'>Empresa: <%= @event.user.name %></p>
+          <p><i class="fas fa-map-marker-alt"></i> <%= @event.location %></p>
           <p><%= @event.description %></p>
       </div>
 
@@ -56,7 +56,7 @@
               </div>
               <div class="text-end d-flex justify-content-between mb-4">
                 <%= link_to 'Voltar aos eventos', events_path, class: 'btn btn-sm btn-outline-secondary' %>
-                <%= f.button :submit, 'Post', class: 'btn btn-sm btn-primary' %>
+                <%= f.button :submit, 'Post', class: 'btn btn-sm btn-post' %>
               </div>
             <% end %>
           </div>
