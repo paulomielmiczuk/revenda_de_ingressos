@@ -3,8 +3,8 @@
   <!-- <div id="post-<%# post.id %>"> -->
     <div class="mt-3">
       <div class="forum-card">
-        <div class="d-flex justify-content-between align-items-center">
-          <div class='d-flex align-items-center'>
+        <div class="d-flex justify-content-between">
+          <div class='d-flex'>
             <% if post.user.photo.attached? %>
               <%= cl_image_tag post.user.photo.key, crop: :fill, class: 'forum-avatar' %>
             <% else %>
@@ -16,7 +16,7 @@
             </div>
           </div>
           <% if post.user == current_user %>
-            <%= link_to "Deletar post", event_post_path(@event, post), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %>
+            <%= link_to "Deletar", event_post_path(@event, post), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger deletar-post' %>
           <% end %>
         </div>
         <!-- Comments -->
