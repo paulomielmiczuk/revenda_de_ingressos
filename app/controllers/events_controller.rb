@@ -2,12 +2,10 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   def index
     @events = Event.order(:date)
-    if params[:query].present?
-      @events = @events.where("title ILIKE ?", "%#{params[:query]}%")
-    end
 
-    if params[:location].present?
-      @events = @events.where("location ILIKE ?", "%#{params[:location]}%")
+    if params[:query].present?
+      query = "%#{params[:query]}%"
+      @events = @events.where("title LIKE ? OR location LIKE ?", query, query)
     end
 
     if params[:date].present?

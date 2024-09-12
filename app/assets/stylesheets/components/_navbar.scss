@@ -110,7 +110,7 @@ body {
   border-radius: 20px;
   background: rgb(255, 255, 255);
   border: 1px solid #ffffff;
-  color: #ffffff;
+  color: #000000;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   margin-right: 2px;
   text-align: center;
@@ -127,4 +127,5 @@ body {
   background-image: url('../images/Lupa.png');
   border: 1px solid #FF7D26;
   color: #000000;
+  transition: background-color 0.3s ease;
 }
