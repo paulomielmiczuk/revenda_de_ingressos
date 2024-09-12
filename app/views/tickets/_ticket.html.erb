@@ -5,8 +5,14 @@
     <div class="card-ticket-infos">
       <h2><%= ticket.ticket_type.event.title %> <%= ticket.id %></h2>
       <p>Data: <strong><%= ticket.ticket_type.event.date.strftime("%d-%m-%Y") %></strong></p>
-      <p>Tipo: <strong><%= ticket.ticket_type.type_of_ticket %></strong> <i class="fa-regular fa-file" style="color: #000000;"></i></p>
-      <p>Preço: <strong><%= humanized_money_with_symbol(ticket.ticket_type.price_cents) %></strong></p>
+      <p>Tipo: <strong><%= ticket.ticket_type.type_of_ticket %></strong>
+
+        <button type="button" data-bs-toggle="modal" data-bs-target="#ticketModal" style='width:100% none'>
+          <i class="fa-regular fa-file" style="color: #000000;"></i>
+        </button>
+
+      </p>
+      <p>Preço: <strong><%= humanized_money_with_symbol(ticket.ticket_type.price_cents / 100) %></strong></p>
       <% if ticket.available %>
         <%= simple_form_for ticket do |f| %>
           <%= f.input :available, :as => :hidden, :input_html => { :value => !ticket.available } %>
@@ -22,3 +28,20 @@
     <div class="cut-right"></div>
   </div>
 <% end %>
+
+
+
+  <!-- Ticket Modal -->
+  <div class="modal fade" id="ticketModal" tabindex="-1" role="dialog" aria-labelledby="ticketModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="ticketModalLabel">Ticket</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= render 'tickets/image', ticket: ticket %>
+        </div>
+      </div>
+    </div>
+  </div>
