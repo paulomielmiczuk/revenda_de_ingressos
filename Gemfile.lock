@@ -270,6 +270,8 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.3.7)
+    rondo_form (0.2.6)
+      railties (>= 6.0)
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -347,6 +349,7 @@ DEPENDENCIES
   pg_search
   puma (>= 5.0)
   rails (~> 7.1.4)
+  rondo_form (~> 0.2.6)
   sassc-rails
   selenium-webdriver
   simple_form!

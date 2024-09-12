@@ -1,8 +1,9 @@
 class TicketsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_event, only: %i[new create]
 
   def index
-    @tickets = Ticket.joins(:event)
+    @tickets = Ticket.joins(ticket_type: :event)
                      .where(user: current_user)
                      .order('events.date ASC')
   end
@@ -12,51 +13,45 @@ class TicketsController < ApplicationController
   end
 
   def new
-    @event = Event.find(params[:event_id])
     @ticket = Ticket.new
-    @tickets_by_type = Ticket.where(event: @event).group(:ticket_type).count
+    @ticket_types = TicketType.where(event: @event)
   end
 
   def create
-    @event = Event.find(params[:event_id])
     created_tickets = []
+    params[:ticket_types].each do |ticket_type_id, quantity|
+      quantity = quantity.to_i
+      next if quantity <= 0
 
-    normal_ticket_quantity = params[:ticket][:normal_ticket_quantity].to_i
-    if normal_ticket_quantity.positive?
-      normal_ticket_quantity.times do
-        ticket = Ticket.create!(ticket_type: 'inteira', event: @event, user: current_user, available: true)
+      ticket_type = TicketType.find(ticket_type_id)
+      quantity.times do
+        ticket = Ticket.create!(user: current_user, ticket_type:, available: true)
         created_tickets << ticket
       end
     end
 
-    half_price_quantity = params[:ticket][:half_price_quantity].to_i
-    if half_price_quantity.positive?
-      half_price_quantity.times do
-        ticket = Ticket.create!(ticket_type: 'meia', event: @event, user: current_user, available: true)
-        created_tickets << ticket
-      end
-    end
-
-    if created_tickets.any?
-      redirect_to edit_images_tickets_path(ticket_ids: created_tickets.map(&:id))
-    else
-      redirect_to tickets_path, notice: 'Nenhum ticket adicionado!'
-    end
+    redirect_to tickets_path
+    # if created_tickets.any?
+    #   redirect_to add_images_tickets_path(ticket_ids: created_tickets.map(&:id))
+    # else
+    #   redirect_to tickets_path, notice: 'Nenhum ticket adicionado'
+    # end
   end
 
-  def edit_images
-    @tickets = Ticket.where(id: params[:ticket_ids])
-  end
+  # def add_images
+  #   @tickets = Ticket.where(id: params[:ticket_ids])
+  # end
 
-  def update_images
-    @tickets = Ticket.where(id: params[:ticket_ids])
-    @tickets.each do |ticket|
-      if params[:ticket].present?
-        ticket.image.attach(params[:ticket][:image]) if params[:ticket][:image].present?
-      end
-    end
-    redirect_to tickets_path, notice: 'Arquivos enviados!'
-  end
+  # def upload_images
+  #   @tickets = Ticket.where(id: params[:ticket_ids])
+  #   raise
+  #   if params[:ticket] && params[:ticket][:photo]
+  #     @ticket.photo.attach(params[:ticket][:photo])
+  #     redirect_to tickets_path, notice: 'Arquivo enviado'
+  #   else
+  #     redirect_to tickets_path, alert: 'Nenhum arquivo selecionado'
+  #   end
+  # end
 
   def destroy
     @ticket = Ticket.find(params[:id])
@@ -74,7 +69,11 @@ class TicketsController < ApplicationController
 
   private
 
+  def set_event
+    @event = Event.find(params[:event_id])
+  end
+
   def ticket_params
-    params.require(:ticket).permit(:available, :image, ticket_type: [], quantity: [], half_price_quantity: [])
+    params.require(:ticket).permit(:photo, :available, ticket_types: %i[id quantity])
   end
 end

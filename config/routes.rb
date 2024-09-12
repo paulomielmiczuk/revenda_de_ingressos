@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :users, only: [:show]
   resources :events do
+    resources :ticket_types, only: %i[new create]
     resources :tickets, only: %i[new create destroy]
-    resources :orders, only: %i[create]
+    resources :orders, only: %i[new create]
     resources :posts, only: %i[new create destroy] do
       resources :comments, only: %i[new create destroy]
     end
@@ -21,8 +22,8 @@ Rails.application.routes.draw do
 
   resources :tickets, only: %i[index update] do
     collection do
-      get 'edit_images', to: 'tickets#edit_images'
-      patch 'update_images', to: 'tickets#update_images'
+      get 'add_images', to: 'tickets#add_images'
+      patch 'upload_images', to: 'tickets#upload_images'
     end
   end
 

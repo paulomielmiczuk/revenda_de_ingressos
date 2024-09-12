@@ -56,6 +56,7 @@ gem "geocoder"
 gem 'money-rails'
 gem 'stripe'
 gem "actioncable-enhanced-postgresql-adapter"
+gem 'rondo_form', '~> 0.2.6'
 
 group :development, :test do
   gem "dotenv-rails"
