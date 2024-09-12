@@ -6,7 +6,7 @@
 .btn-vender,
 .btn-comprar {
   font-family: "Poppins", sans-serif;
-  background-color: #E67E22;
+  background-color: #FF6600;
   border: none;
   color: white;
   border-radius: 10px;
@@ -14,15 +14,14 @@
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #FF6600;
-    color: #fff;
-    font-size: larger;
+    background-color: #ff791f;
+    color: #ffffff;
   }
 }
 
 .btn-post {
   font-family: "Poppins", sans-serif;
-  background-color: #E67E22;
+  background-color: #FF6600;
   border: none;
   color: white;
   border-radius: 10px;
@@ -30,7 +29,7 @@
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #FF6600;
-    color: #000000;
+    background-color: #ff791f;
+    color: #ffffff;
   }
 }
