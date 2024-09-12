@@ -99,11 +99,11 @@ puts 'Events created!'
 
 puts 'Creating tickets...'
 
-ticket_type1 = TicketType.create!(type_of_ticket: 'Meia', price_cents: 200, event: event1)
-ticket_type2 = TicketType.create!(type_of_ticket: 'Inteira', price_cents: 400, event: event1)
-ticket_type3 = TicketType.create!(type_of_ticket: 'Meia', price_cents: 200, event: event2)
-ticket_type4 = TicketType.create!(type_of_ticket: 'Inteira', price_cents: 400, event: event2)
-ticket_type5 = TicketType.create!(type_of_ticket: 'VIP', price_cents: 500, event: event2)
+ticket_type1 = TicketType.create!(type_of_ticket: 'Meia', price_cents: 2000, event: event1)
+ticket_type2 = TicketType.create!(type_of_ticket: 'Inteira', price_cents: 4000, event: event1)
+ticket_type3 = TicketType.create!(type_of_ticket: 'Meia', price_cents: 2000, event: event2)
+ticket_type4 = TicketType.create!(type_of_ticket: 'Inteira', price_cents: 4000, event: event2)
+ticket_type5 = TicketType.create!(type_of_ticket: 'VIP', price_cents: 5000, event: event2)
 
 ticket1 = Ticket.create!(user: user1, available: true, ticket_type: ticket_type1)
 ticket2 = Ticket.create!(user: user2, available: true, ticket_type: ticket_type2)

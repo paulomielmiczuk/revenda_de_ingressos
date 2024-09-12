@@ -2,24 +2,30 @@
   <h6><strong><%= @event.title %></strong></h6>
   <hr>
 
-  <%= simple_form_for [@event, @order] do |form| %>
-    <% @event.ticket_types.each do |ticket_type| %>
-      <% available_count = Ticket.where(ticket_type: ticket_type, available: true).count %>
-        <% if available_count > 0 %>
-          <div class="form-group">
-            <%= form.input "#{ticket_type.type_of_ticket}_quantity", label: "#{ticket_type.type_of_ticket.capitalize} (Preço: #{humanized_money_with_symbol(ticket_type.price_cents / 10.0)} cada) - #{available_count} #{available_count > 1 ? 'disponíveis' : 'disponível'}",
-                          as: :integer,
-                          input_html: { min: 0, max: available_count, step: 1, value: 0 },
-                          required: false %>
-          </div>
-        <% end %>
+  <% available_ticket_types = @event.ticket_types.select do |ticket_type|
+    Ticket.where(ticket_type: ticket_type, available: true).count > 0
+  end %>
+
+  <% if available_ticket_types.any? %>
+    <%= simple_form_for [@event, @order] do |form| %>
+      <% available_ticket_types.each do |ticket_type| %>
+        <% available_count = Ticket.where(ticket_type: ticket_type, available: true).count %>
+        <div class="form-group">
+          <%= form.input "#{ticket_type.type_of_ticket}_quantity", label: "#{ticket_type.type_of_ticket.capitalize} (Preço: #{humanized_money_with_symbol(ticket_type.price_cents / 100.0)} cada) - #{available_count} #{available_count > 1 ? 'disponíveis' : 'disponível'}",
+                        as: :integer,
+                        input_html: { min: 0, max: available_count, step: 1, value: 0 },
+                        required: false %>
+        </div>
+      <% end %>
+
+      <%= form.hidden_field :event_id, value: @event.id %>
+
+      <div class="text-center mt-3">
+        <%= form.submit 'Fazer Pedido', class: 'btn btn-primary' %>
+      </div>
+
     <% end %>
-
-    <%= form.hidden_field :event_id, value: @event.id %>
-
-    <div class="text-center mt-3">
-      <%= form.submit 'Fazer Pedido', class: 'btn btn-primary' %>
-    </div>
-
+  <% else %>
+    <p>Sorry, no tickets available</p>
   <% end %>
 </div>
