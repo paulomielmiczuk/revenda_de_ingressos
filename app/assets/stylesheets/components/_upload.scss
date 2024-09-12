@@ -1,0 +1,28 @@
+.upload-ticket {
+  overflow: hidden;
+  width: 100%;
+  background: white;
+  display: flex;
+  box-shadow: 0 15px 15px -14px rgba(0,0,0,0.2);
+}
+
+.upload-ticket .upload-ticket-infos {
+  width: 100%;
+  padding: 16px;
+}
+
+.uploaded {
+  overflow: hidden;
+  width: 100%;
+  height: 136px;
+  background: white;
+  display: flex;
+}
+
+.uploaded p {
+margin-bottom: 0;
+}
+
+.migué {
+  width: 356.5px;
+}
