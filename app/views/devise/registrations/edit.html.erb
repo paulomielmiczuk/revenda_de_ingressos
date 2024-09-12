@@ -10,6 +10,11 @@
           <div class="form-inputs">
 
             <div class="form-group mb-3 position-relative">
+              <i class="fa-solid fa-user position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%); color: #FF6600;"></i>
+              <%= f.input :name, required: true, autofocus: true, label: false, placeholder: 'Nome', input_html: { class: 'form-control', style: 'padding-left: 35px;' } %>
+            </div>
+
+            <div class="form-group mb-3 position-relative">
               <i class="fa-solid fa-envelope position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%); color: #FF6600;"></i>
               <%= f.input :email, required: true, autofocus: true, label: false, placeholder: 'Email', input_html: { class: 'form-control', style: 'padding-left: 35px;' } %>
             </div>
