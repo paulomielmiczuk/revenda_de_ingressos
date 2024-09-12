@@ -10,10 +10,10 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <div class="search-container">
-        <%= form_with url: events_path, method: :get, class: "d-flex" do %>
+        <%= form_with url: events_path, method: :get, id: "search-form", class: "d-flex" do %>
           <div class="input-group">
-            <%= text_field_tag :query, params[:query], class: "form-control field-btn", placeholder: "Nome do evento ou cidade", style: "width: 300px;" %>
-            <%= text_field_tag :date, params[:date], class: "form-control field-btn", placeholder: "Date", type: "date", style: "width: 250px;"%>
+            <%= text_field_tag :query, params[:query], id: "search-query", class: "form-control field-btn", placeholder: "Nome do evento ou cidade", style: "width: 300px;" %>
+            <%= text_field_tag :date, params[:date], class: "form-control field-btn", placeholder: "Date", type: "date", style: "width: 250px;" %>
 
             <%= button_tag type: "submit", name: "", class: "search-btn btn-success" do %>
               <i class="fa-solid fa-magnifying-glass"></i>
@@ -21,6 +21,10 @@
           </div>
         <% end %>
       </div>
+
+    <script>
+      document.getElementById("search-query").value = "";
+    </script>
 
       <ul class="navbar-nav ms-auto">
         <% if user_signed_in? %>
