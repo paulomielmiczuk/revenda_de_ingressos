@@ -33,12 +33,9 @@ body {
 .search-container {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
-//   padding: 10px 15px;
-//   border-radius: 15px;
-//   display: flex;
-//   align-items: center;
-//   left: 50%;
-//   transform: translateX(-50%);
+  &:hover {
+    border: solid 1px #FF6600;
+  }
 }
 
 .search-field {
@@ -47,7 +44,6 @@ body {
   border: 0;
   border-radius: 20px 0 0 20px;
   text-align: center;
-//   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 //   transition: background-color 0.3s ease;
 }
 
@@ -66,82 +62,8 @@ body {
   border: 0;
   border-radius: 0 20px 20px 0;
   width: 120px;
-  // box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   // transition: background-color 0.3s ease;
+  &:hover {
+    background-color: #FF6600;
+  }
 }
-
-
-// .input-group {
-//   width: 100%;
-// }
-
-// .form-control.no-border {
-//   background-color: transparent;
-//   border: none;
-//   border-radius: 0;
-//   box-shadow: none;
-//   align-items: center;
-//   align-items: center;
-// }
-
-// .form-control {
-//   margin: 0;
-//   padding: 0.5rem;
-// }
-
-// .my_events-btn {
-//   width: 150px;
-//   border-radius: 20px;
-//   background: rgb(0, 0, 0);
-//   border: 1px solid #000000;
-//   color: #ffffff;
-//   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-//   margin-left: 10px;
-//   text-align: center;
-//   text-decoration: none;
-//   display: inline-flex;
-//   align-items: center;
-//   justify-content: center;
-//   transition: background-color 0.3s ease;
-// }
-
-// .my_events-btn:hover {
-//   background-color: #FF7D26;
-//   border: 1px solid #FF7D26;
-//   color: #000000;
-// }
-
-// .search-btn {
-//   width: 150px;
-//   border-radius: 20px;
-//   background: rgb(0, 0, 0);
-//   border: 1px solid #000000;
-//   color: #ffffff;
-//   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-//   margin-left: 10px;
-//   text-align: center;
-//   text-decoration: none;
-//   display: inline-flex;
-//   align-items: center;
-//   justify-content: center;
-//   transition: background-color 0.3s ease;
-//   background-image: url('../images/Lupa.png');
-// }
-
-// .search-btn:hover {
-//   background-color: #FF7D26;
-//   background-image: url('../images/Lupa.png');
-//   border: 1px solid #FF7D26;
-//   color: #000000;
-// }
-
-
-
-
-// .field-btn:hover {
-//   background-color: #ffffff;
-//   background-image: url('../images/Lupa.png');
-//   border: 1px solid #FF7D26;
-//   color: #000000;
-//   transition: background-color 0.3s ease;
-// }
